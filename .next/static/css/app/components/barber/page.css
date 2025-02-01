@@ -56,4 +56,10 @@
         color: white;
     }
 
+    .calendly img{
+        width: 300px;
+        height: 300px;
+    
+    }
+
 }
