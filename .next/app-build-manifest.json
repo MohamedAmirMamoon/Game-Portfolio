@@ -30,6 +30,12 @@
       "static/css/app/components/barber/page.css",
       "static/chunks/app/components/barber/page.js"
     ],
+    "/components/me/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/components/me/page.css",
+      "static/chunks/app/components/me/page.js"
+    ],
     "/_not-found/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",

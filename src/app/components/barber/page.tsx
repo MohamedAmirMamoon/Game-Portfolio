@@ -17,7 +17,13 @@ export default function Barber() {
 
                 <p>Click Anywhere to Book</p>
 
-                <h3>Calendly API coming soon!</h3>
+
+                <div className="insta">
+                    <a>
+                        <img src="/barber-chair.png"></img>
+                    </a>
+
+                </div>
             </div>
 
 
