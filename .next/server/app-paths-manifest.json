@@ -1,6 +1,6 @@
 {
   "/page": "app/page.js",
   "/components/introCard/page": "app/components/introCard/page.js",
-  "/components/projectDisplay/page": "app/components/projectDisplay/page.js",
-  "/components/barber/page": "app/components/barber/page.js"
+  "/components/barber/page": "app/components/barber/page.js",
+  "/components/projectDisplay/page": "app/components/projectDisplay/page.js"
 }

@@ -9,7 +9,7 @@ export default function Barber() {
     return (
         <div>
             <div className="barber-title">
-                <p>💈 Set Up An Appointment 💈</p>
+                <p>💈 Set Up a Haircut Appointment 💈</p>
             </div>
             <div className="calendly">
                 <p>Calendly:</p>

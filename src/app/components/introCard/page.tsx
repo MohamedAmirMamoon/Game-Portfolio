@@ -58,7 +58,7 @@ export default function IntroCard() {
                 <CardNav img="/projects.png" title="Projects" w={60} h={50} />
             </div>
             <div onClick={() => setActiveSection("resume")} >
-                <CardNav img="/notes.png" title="Resume" w={50} h={50} />
+                <CardNav img="/notes.png" title="Experience" w={50} h={50} />
             </div>
         </div>
             
@@ -83,7 +83,7 @@ export default function IntroCard() {
         </div>
 
         <div className="homebottom-title">
-            <p>LavaLab - I had to get in the Lab 😭</p>
+            <p>LavaLab - I had to get in the Lab 😭 🔥 🔥 🔥</p>
         </div>
 
 
