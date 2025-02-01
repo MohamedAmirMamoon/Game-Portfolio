@@ -1,8 +1,8 @@
 // File: /Users/momamoon/Desktop/projects/gbport/src/app/components/contact/page.tsx
-import * as entry from '../../../../../src/app/components/introCard/contact/page.jsx'
+import * as entry from '../../../../../src/app/components/introCard/contact/Contact.jsx'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
-type TEntry = typeof import('../../../../../src/app/components/introCard/contact/page.jsx')
+type TEntry = typeof import('../../../../../src/app/components/introCard/contact/Contact.jsx')
 
 type SegmentParams<T extends Object = any> = T extends Record<string, any>
   ? { [K in keyof T]: T[K] extends string ? string | string[] | undefined : never }

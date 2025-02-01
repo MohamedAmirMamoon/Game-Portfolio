@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import './project.css';
-import ProjectCard from './projectCard/page';
+import ProjectCard from './projectCard/ProjectDisplay';
 
 
 export default function ProjectDisplay() {

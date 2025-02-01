@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import IntroCard from './components/introCard/page';
-import Contact from './components/introCard/contact/page';
+import Contact from './components/introCard/contact/Contact';
 import Footer from './components/footer/page';
 import Navbar from './components/navbar/page';
 import { AnimatePresence, motion } from "framer-motion";

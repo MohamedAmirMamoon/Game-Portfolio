@@ -3,8 +3,8 @@ import {useRouter} from 'next/navigation'
 import Image from 'next/image';
 import './intro.css'
 import CardNav from './cardNav/CardNav';
-import Contact from './contact/page';
-import RouteContent from './routeContent/page';
+import Contact from './contact/Contact';
+import RouteContent from './routeContent/RouteContent';
 import { useState } from 'react';
 
 
