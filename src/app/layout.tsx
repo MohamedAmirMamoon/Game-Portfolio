@@ -30,7 +30,7 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <title>Mo's Portfolio</title>
-        <link rel="icon" href="/pokeball.png" type="image/png" />
+        <link rel="icon" href="/favicon.ico" type="image/png" />
       </head>
       <body
         
