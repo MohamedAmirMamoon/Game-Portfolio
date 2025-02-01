@@ -2,7 +2,7 @@
 import {useRouter} from 'next/navigation'
 import Image from 'next/image';
 import './intro.css'
-import CardNav from './cardNav/page';
+import CardNav from './cardNav/CardNav';
 import Contact from './contact/page';
 import RouteContent from './routeContent/page';
 import { useState } from 'react';

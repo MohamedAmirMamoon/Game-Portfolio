@@ -15,8 +15,8 @@ export default function ProjectDisplay() {
                 </div>
 
                 <div card-container>
-                    <ProjectCard img="/superdayproj.png" title="Superday" w={300} h={200}/>
-                    <ProjectCard img="/dreamwalkersproj.png" title="Dreamwalkers" w={300} h={200}/>
+                    <ProjectCard img="/superdayproj.png" title="Superday" w={300} h={200} link="https://superdayprep.com/"/>
+                    <ProjectCard img="/dreamwalkersproj.png" title="Dreamwalkers" w={300} h={200} link="https://github.com/MohamedAmirMamoon/Dreamwalkers"/>
 
                 </div>
             
