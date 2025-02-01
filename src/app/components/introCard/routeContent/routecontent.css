@@ -31,3 +31,8 @@
     text-align: center; /* Centers text inside */
     border-radius: 8px; /* Optional: Slightly rounded corners */
 }
+
+@media (max-width: 1200px) {
+   
+
+}

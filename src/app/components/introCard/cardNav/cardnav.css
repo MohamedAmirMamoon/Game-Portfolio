@@ -73,3 +73,13 @@
   70% { transform: scale(1.05); } /* Small bounce */
   100% { transform: scale(1.08); }
 }
+
+@media (max-width: 1200px) { 
+  .pixel-button {
+    width: 100px;
+    height: 80px;
+    font-size: 8px;
+    
+  }
+
+}

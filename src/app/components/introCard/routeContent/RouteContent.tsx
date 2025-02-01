@@ -31,13 +31,13 @@ export default function RouteContent({ activeSection }: ActiveSectionProps) {
             )}
             {activeSection === "projects" && (
                 <div className="actualcontent">
-                <h2>Projects</h2>
+                <h2>Projects - links in nav</h2>
                 <p>- Superday<br></br>- Ride Share<br></br>- Dreamwalkers<br></br>- UFC Fight Predictor<br></br>- Chosn Relationships</p>
                 </div>
             )}
             {activeSection === "resume" && (
                 <div className="actualcontent">
-                <h2>Resume</h2>
+                <h2>Experience</h2>
                 <p>SWE @ Tip Top Technologies<br></br> <br></br>Full-stack Engineer Intern @ IBM<br></br> <br></br> Data Science Intern @ County of Marin</p>
                 </div>
             )}

@@ -34,3 +34,18 @@ a {
   left: 100px;
   z-index: 1000; /* Ensures it stays on top */
 }
+
+@media (max-width: 768px) { /* Adjust for smaller screens */
+  .navbar {
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+  }
+  .footer {
+      font-size: 10px;
+  }
+}

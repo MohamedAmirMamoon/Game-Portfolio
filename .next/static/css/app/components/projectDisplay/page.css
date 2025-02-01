@@ -67,8 +67,12 @@
 
     .project-card {
         max-width: 90%; /* Use most of the screen width */
+        font-size: 30px;
+        margin-bottom: 100px;
+        color: white;
     }
 }
+
 
 /*!********************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[10].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[10].use[3]!./src/app/components/projectDisplay/projectCard/projcard.css ***!

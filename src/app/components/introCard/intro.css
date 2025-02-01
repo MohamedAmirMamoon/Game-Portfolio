@@ -66,8 +66,10 @@
     border: 5px solid;
     border-radius: 50%;
     border-color:black;
+    
 
 }
+
 
 
 .name {
@@ -137,4 +139,92 @@
     margin-top: 100px;
     font-family: 'minecraftbold';
     font-size: 30px;
+}
+
+@media (max-width: 1200px) { 
+    .home-title {
+        font-size: 20px;
+        color: white;
+    }
+    .homebottom-title {
+        font-size: 15px;
+    }
+
+    .intro-wrapper {
+        max-width: 250px;
+        height: 480px;
+        margin-left: 20px;
+    }
+    
+    .myimg img {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .myimg {
+        margin-top: 70px;
+    }
+
+    /* ✅ Stack Everything Vertically on Small Screens */
+    .page-content {
+        display: flex;
+        flex-direction: column; /* Ensures stacking order */
+        align-items: center; /* Centers everything */
+        justify-content: flex-start; /* Aligns content naturally */
+        width: 100%;
+        max-width: 1000px;
+        margin: 0 auto;
+        gap: 30px; /* Ensures spacing between `.cardplusnav` and `.content` */
+    }
+    
+    .cardplusnav {
+        display: flex;
+        flex-direction: column; /* Keep nav items stacked */
+        align-items: center;
+        width: 100%;
+    }
+    
+    
+
+    /* ✅ Ensure `.content` is below `.cardplusnav` */
+    .content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+
+    /* ✅ Move `.socials` to the bottom but keep it in a row */
+    .socials {
+        position: fixed; /* Fix it at the bottom */
+        bottom: 20px; /* Adjust to fit your design */
+        left: 50%; /* Move to the center */
+        transform: translateX(-50%); /* Ensure perfect centering */
+        display: flex;
+        flex-direction: row; /* Keep social icons in a row */
+        justify-content: center; /* Center them properly */
+        width: 100%;
+        gap: 15px;
+        margin-top: 650px;
+
+    }
+
+    .info {
+        font-size: 10px;
+        margin-top: 0px;
+    }
+
+    .homebottom-title {
+        display: none; /* Hides it completely on smaller screens */
+    }
+}
+
+
+@media (max-width: 800px) {
+    .intro-wrapper {
+    
+        margin-left: 90px;
+    }
+
 }

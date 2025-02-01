@@ -64,5 +64,9 @@
 
     .project-card {
         max-width: 90%; /* Use most of the screen width */
+        font-size: 30px;
+        margin-bottom: 100px;
+        color: white;
     }
 }
+

@@ -26,3 +26,11 @@
     image-rendering: pixelated;
     cursor: pointer;
 }
+
+
+@media (max-width: 768px) { /* Adjust for smaller screens */
+    .navbar-wrapper {
+        gap: 5px;
+    }
+        
+  }

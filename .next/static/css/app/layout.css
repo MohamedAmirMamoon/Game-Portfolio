@@ -37,6 +37,21 @@ a {
   left: 100px;
   z-index: 1000; /* Ensures it stays on top */
 }
+
+@media (max-width: 768px) { /* Adjust for smaller screens */
+  .navbar {
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+  }
+  .footer {
+      font-size: 10px;
+  }
+}
 /*!**********************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[10].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[10].use[3]!./src/app/components/footer/footer.css ***!
   \**********************************************************************************************************************************************************************************************************************************************************************************/
@@ -84,3 +99,11 @@ a {
     image-rendering: pixelated;
     cursor: pointer;
 }
+
+
+@media (max-width: 768px) { /* Adjust for smaller screens */
+    .navbar-wrapper {
+        gap: 5px;
+    }
+        
+  }

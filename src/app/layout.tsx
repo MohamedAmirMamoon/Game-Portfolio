@@ -28,6 +28,10 @@ export default function RootLayout({
 
   return (
     <html lang="en">
+      <head>
+        <title>Mo's Portfolio</title>
+        <link rel="icon" href="/pokeball.png" type="image/png" />
+      </head>
       <body
         
         style={{
@@ -65,8 +69,10 @@ export default function RootLayout({
           </motion.div>
         </AnimatePresence>
 
+        <div className="footer">
+          <Footer/>
+        </div>
 
-        <Footer/>
       </body>
     </html>
   );

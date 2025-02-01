@@ -48,3 +48,13 @@
 
     padding-bottom: 500px;
 }
+
+@media (max-width: 1200px) {
+    .barber-title {
+    
+        font-size: 30px;
+        margin-top: 150px;
+        color: white;
+    }
+
+}
