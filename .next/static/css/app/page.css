@@ -113,6 +113,34 @@
     left: 70%;
     transform: translate(-50%, -50%);
 }
+
+
+.home-title {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: fixed;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'minecraftbold';
+    font-size: 50px;
+
+}
+
+.homebottom-title {
+    position: fixed;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 100px;
+    font-family: 'minecraftbold';
+    font-size: 30px;
+}
 /*!**********************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[10].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[10].use[3]!./src/app/components/introCard/cardNav/cardnav.css ***!
   \**********************************************************************************************************************************************************************************************************************************************************************************************/

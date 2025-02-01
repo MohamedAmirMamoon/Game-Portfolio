@@ -11,6 +11,24 @@
 }
 
 .project-item h4 {
-    margin-bottom: 20px;;
+    margin-bottom: 10px;
+}
 
+@media (max-width: 768px) { /* iPhones and smaller tablets */
+    .card-container {
+        flex-direction: column; /* Stack cards vertically */
+    }
+
+    .project-card {
+        max-width: 90%; /* Use most of the screen width */
+    }
+
+    .project-item {
+        width: 50%;
+        height: auto;
+    }
+    .project-item img {
+        width: 50%;
+        height: auto;
+    }
 }

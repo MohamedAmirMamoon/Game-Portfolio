@@ -31,12 +31,13 @@ export default function RootLayout({
       <body
         
         style={{
-          height: "100vh",
+          minHeight: "750px", // ✅ Ensures no scrolling until height exceeds 750px
           margin: 0,
-          overflow: "hidden",
+          overflowY: "auto", // ✅ Enables vertical scrolling when needed
           display: "flex", // ✅ Enables flexbox
-          justifyContent: "center", // ✅ Centers horizontally
-          alignItems: "center", // ✅ Centers vertically
+          flexDirection: "column", // ✅ Aligns content properly
+          justifyContent: "center", // ✅ Centers content vertically (only if it fits)
+          alignItems: "center", // ✅ Centers horizontally
           backgroundImage: "url('/adventuretime.png')",
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center center",

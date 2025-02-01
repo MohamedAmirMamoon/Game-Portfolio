@@ -1,4 +1,50 @@
 /*!**********************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[10].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[10].use[3]!./src/app/components/barber/barber.css ***!
   \**********************************************************************************************************************************************************************************************************************************************************************************/
+@font-face {
+    font-family: "Pixelboy";
+    src: url("/fonts/Pixeboy.ttf") format("truetype"); /* Ensure the path is correct */
+    font-weight: normal;
+    font-style: normal;
+}
 
+@font-face {
+    font-family: 'minecraft';
+    src: url('/fonts/minecraft.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'minecraftbold';
+    src: url('/fonts/minecraftbold.otf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+.barber-title {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 100px;
+    font-family: 'minecraftbold';
+    font-size: 50px;
+
+}
+
+.calendly {
+    background-color: rgb(255, 255, 255);
+    border: black;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 10px;
+    margin-left: 100px;
+    margin-right: 100px;
+    margin-top: 50px;
+    text-align: center;
+    font-size: 30px;
+    font-family: "Pixelboy";
+
+    padding-bottom: 500px;
+}

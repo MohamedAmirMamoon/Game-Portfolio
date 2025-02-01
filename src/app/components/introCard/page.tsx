@@ -43,6 +43,7 @@ export default function IntroCard() {
                 <p>Student at USC</p>
                 <p> - </p>
                 <p>SWE Intern @ Mindwave AI</p>
+                <p>Prev @ IBM</p>
             </div>
         </div>
 
@@ -69,12 +70,24 @@ export default function IntroCard() {
             <Contact img="/envelope.png" title="Contact" w={70} h={50} link="mailto:mohamedamamoon0@gmail.com"/>
             <Contact img="/insta.png" title="Insta" w={50} h={50} link="https://www.instagram.com/amir.mamoonn/"/>
             <Contact img="/linkedin.png" title="LinkedIn" w={50} h={50} link="https://www.linkedin.com/in/mohamed-mamoon/"/>
+            <Contact img="/github.png" title="Github" w={50} h={50} link="https://github.com/MohamedAmirMamoon"/>
         </div>
 
         <div className="content">
             <RouteContent activeSection={activeSection}/>
 
         </div>
+
+        <div className="home-title">
+            <p>Dev Porfolio</p>
+        </div>
+
+        <div className="homebottom-title">
+            <p>LavaLab - I had to get in the Lab 😭</p>
+        </div>
+
+
+        
 
 
            
