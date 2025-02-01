@@ -1,0 +1,311 @@
+/*!************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[10].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[10].use[3]!./src/app/components/introCard/intro.css ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************/
+@font-face {
+    font-family: "Pixelboy";
+    src: url("/fonts/Pixeboy.ttf") format("truetype"); /* Ensure the path is correct */
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'minecraft';
+    src: url('/fonts/minecraft.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'minecraftbold';
+    src: url('/fonts/minecraftbold.otf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+.intro-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 350px;
+    height: 500px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 17px;
+    font-weight: bold;
+    gap: 10px;
+    padding: 20px;
+    position: fixed;
+    top: 50%;
+    left: 38%;
+    transform: translate(-50%, -50%);
+    
+    
+
+    background: linear-gradient(135deg, 
+        rgb(215, 230, 255),  /* Light Blue */
+        rgb(97, 155, 255),  /* Mid Blue */
+        rgb(30, 59, 139)     /* Darker Blue */
+    );
+
+    /* Pixelated effect */
+    border: 8px solid rgb(0, 0, 0); /* Thick black border */
+    box-shadow: 4px 4px 0px rgb(0, 0, 0), 8px 8px 0px rgb(70, 70, 70); /* Game-like blocky shadow */
+    border-radius: 0; /* Remove rounded corners for a pixelated look */
+    
+    /* Pixel font */
+    font-family: 'minecraftbold'; /* Add this font */
+    z-index: 2;
+}
+
+/* Add hover effect for interactivity */
+.intro-wrapper:hover {
+    transform: translate(-50%, -54%);
+    box-shadow: 8px 8px 0px rgb(0, 0, 0), 12px 12px 0px rgb(40, 40, 40);
+}
+
+.myimg {
+    border: 5px solid;
+    border-radius: 50%;
+    border-color:black;
+
+}
+
+
+.name {
+    margin-top: 10px;
+}
+
+.info {
+    margin-top: 30px;
+}
+
+.cardnavigation {
+    position: fixed;
+    top: 50%;
+    left: 22.5%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    
+}
+
+.socials {
+    position: fixed;
+    top: 10%;
+    left: 80%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+
+}
+
+.content {
+    position: fixed;
+    top: 50%;
+    left: 70%;
+    transform: translate(-50%, -50%);
+}
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[10].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[10].use[3]!./src/app/components/introCard/cardNav/cardnav.css ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************/
+.pixel-button {
+    width: 140px;
+    height: 100px;
+    background: linear-gradient(to bottom, #96b6da, #567496); /* Retro Game Boy green */
+    border: 4px solid #35475c; /* Darker green border */
+    border-radius: 6px; /* Slight curve to mimic old screens */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    font-family: 'Press Start 2P', sans-serif; /* Pixel font */
+    font-size: 12px;
+    color: #35393e;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 0 #2c3820;
+    position: relative;
+    box-shadow: inset -3px -3px #566d87, inset 3px 3px #84a4c8; /* Pixel shadow */
+    image-rendering: pixelated;
+
+    transition: gap 0.1s ease-in-out, transform 0.1s ease-in-out;
+}
+
+/* Small black pixel dots on the sides */
+.pixel-button::before,
+.pixel-button::after {
+  content: "";
+  width: 4px;
+  height: 4px;
+  background: #2c3820;
+  position: absolute;
+  left: 6px;
+}
+
+.pixel-button::before {
+  top: 6px; /* Top-left dot */
+}
+
+.pixel-button::after {
+  bottom: 6px; /* Bottom-left dot */
+}
+
+/* Icon Styling */
+.pixel-icon {
+    width: 20px;
+    height: 20px;
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/5/50/Pixel_Art_Man.png'); /* Replace with your own pixel icon */
+    background-size: contain;
+    background-repeat: no-repeat;
+    image-rendering: pixelated;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    30% { transform: translateY(-10px); }
+    50% { transform: translateY(0); }
+    70% { transform: translateY(-5px); }
+}
+
+
+.pixel-button:hover {
+  animation: hover-bounce 0.5s ease-in-out forwards;
+  gap: 12px;
+  cursor: pointer;
+  
+}
+
+/* Hover Bounce Animation */
+@keyframes hover-bounce {
+  0% { transform: scale(1); }
+  30% { transform: scale(1.1); } /* Slightly larger */
+  50% { transform: scale(1); } /* Back to normal */
+  70% { transform: scale(1.05); } /* Small bounce */
+  100% { transform: scale(1.08); }
+}
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[10].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[10].use[3]!./src/app/components/introCard/contact/contact.css ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************/
+.contact-button {
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(to bottom, #96b6da, #567496); /* Retro Game Boy green */
+    border: 4px solid #35475c; /* Darker green border */
+    border-radius: 6px; /* Slight curve to mimic old screens */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-family: 'Press Start 2P', sans-serif; /* Pixel font */
+    font-size: 8px;
+    color: #35393e;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 0 #2c3820;
+    position: relative;
+    box-shadow: inset -3px -3px #566d87, inset 3px 3px #84a4c8; /* Pixel shadow */
+    image-rendering: pixelated;
+}
+
+/* Small black pixel dots on the sides */
+.contact-button::before,
+.contact-button::after {
+  content: "";
+  width: 4px;
+  height: 4px;
+  background: #2c3820;
+  position: absolute;
+  left: 6px;
+}
+
+.contact-button::before {
+  top: 6px; /* Top-left dot */
+}
+
+.contact-button::after {
+  bottom: 6px; /* Bottom-left dot */
+}
+
+/* Icon Styling */
+.contact-icon {
+    width: 20px;
+    height: 20px;
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/5/50/Pixel_Art_Man.png'); /* Replace with your own pixel icon */
+    background-size: contain;
+    background-repeat: no-repeat;
+    image-rendering: pixelated;
+}
+
+
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    30% { transform: translateY(-10px); }
+    50% { transform: translateY(0); }
+    70% { transform: translateY(-5px); }
+}
+
+.contact-button {
+    animation: fade-slide-in 0.8s ease-out forwards, 
+                bounce 0.6s ease-out 0.8s; /* Bounce starts AFTER fade-in */
+}
+
+.contact-button:hover {
+  animation: hover-bounce 0.5s ease-in-out forwards;
+  gap: 12px;
+  cursor: pointer;
+  
+}
+
+/* Hover Bounce Animation */
+@keyframes hover-bounce {
+  0% { transform: scale(1); }
+  30% { transform: scale(1.1); } /* Slightly larger */
+  50% { transform: scale(1); } /* Back to normal */
+  70% { transform: scale(1.05); } /* Small bounce */
+  100% { transform: scale(1.08); }
+}
+/*!********************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[10].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[10].use[3]!./src/app/components/introCard/routeContent/routecontent.css ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************************************/
+@font-face {
+    font-family: 'minecraft';
+    src: url('/fonts/minecraft.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+.content-wrapper {
+    background: linear-gradient(135deg, 
+        rgb(215, 230, 255),  /* Light Blue */
+        rgb(97, 155, 255),  /* Mid Blue */
+        rgb(30, 59, 139)     /* Darker Blue */
+    );
+
+    color: white;
+    width: 300px;
+    height: 400px; /* Ensure it has height */
+    display: flex;
+    justify-content: center; /* Centers horizontally */
+    align-items: center; /* Centers vertically */
+    border: 4px solid black; /* Makes the wrapper visible */
+    font-family: 'minecraft';
+}
+
+.actualcontent {
+    background-color: black;
+    width: 250px; /* Adjust as needed */
+    height: 350px;
+    padding: 20px;
+    text-align: center; /* Centers text inside */
+    border-radius: 8px; /* Optional: Slightly rounded corners */
+}

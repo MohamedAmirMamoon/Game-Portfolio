@@ -1,0 +1,75 @@
+.pixel-button {
+    width: 140px;
+    height: 100px;
+    background: linear-gradient(to bottom, #96b6da, #567496); /* Retro Game Boy green */
+    border: 4px solid #35475c; /* Darker green border */
+    border-radius: 6px; /* Slight curve to mimic old screens */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    font-family: 'Press Start 2P', sans-serif; /* Pixel font */
+    font-size: 12px;
+    color: #35393e;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 0 #2c3820;
+    position: relative;
+    box-shadow: inset -3px -3px #566d87, inset 3px 3px #84a4c8; /* Pixel shadow */
+    image-rendering: pixelated;
+
+    transition: gap 0.1s ease-in-out, transform 0.1s ease-in-out;
+}
+
+/* Small black pixel dots on the sides */
+.pixel-button::before,
+.pixel-button::after {
+  content: "";
+  width: 4px;
+  height: 4px;
+  background: #2c3820;
+  position: absolute;
+  left: 6px;
+}
+
+.pixel-button::before {
+  top: 6px; /* Top-left dot */
+}
+
+.pixel-button::after {
+  bottom: 6px; /* Bottom-left dot */
+}
+
+/* Icon Styling */
+.pixel-icon {
+    width: 20px;
+    height: 20px;
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/5/50/Pixel_Art_Man.png'); /* Replace with your own pixel icon */
+    background-size: contain;
+    background-repeat: no-repeat;
+    image-rendering: pixelated;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    30% { transform: translateY(-10px); }
+    50% { transform: translateY(0); }
+    70% { transform: translateY(-5px); }
+}
+
+
+.pixel-button:hover {
+  animation: hover-bounce 0.5s ease-in-out forwards;
+  gap: 12px;
+  cursor: pointer;
+  
+}
+
+/* Hover Bounce Animation */
+@keyframes hover-bounce {
+  0% { transform: scale(1); }
+  30% { transform: scale(1.1); } /* Slightly larger */
+  50% { transform: scale(1); } /* Back to normal */
+  70% { transform: scale(1.05); } /* Small bounce */
+  100% { transform: scale(1.08); }
+}

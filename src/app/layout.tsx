@@ -1,0 +1,73 @@
+"use client";
+
+import type { Metadata } from "next";
+import { Geist, Geist_Mono } from "next/font/google";
+import "./globals.css";
+import IntroCard from './components/introCard/page';
+import Contact from './components/introCard/contact/page';
+import Footer from './components/footer/page';
+import Navbar from './components/navbar/page';
+import { AnimatePresence, motion } from "framer-motion";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
+
+
+
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  const pathname = usePathname();
+  const [displayChildren, setDisplayChildren] = useState(children);
+
+  useEffect(() => {
+    setDisplayChildren(children);
+  }, [children]);
+
+  return (
+    <html lang="en">
+      <body
+        
+        style={{
+          height: "100vh",
+          margin: 0,
+          overflow: "hidden",
+          display: "flex", // ✅ Enables flexbox
+          justifyContent: "center", // ✅ Centers horizontally
+          alignItems: "center", // ✅ Centers vertically
+          backgroundImage: "url('/adventuretime.png')",
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "center center",
+          backgroundAttachment: "fixed",
+          backgroundSize: "cover",
+        }}
+      >
+        <nav className="navbar">
+          <Navbar/>
+
+        </nav>
+        
+        
+        
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={pathname} // ✅ Triggers animation when route changes
+            initial={{ x: "100%", opacity: 0 }} // Start off-screen (right)
+            animate={{ x: 0, opacity: 1 }} // Slide in to position
+            exit={{ x: "-100%", opacity: 0 }} // Slide out to the left
+            transition={{ duration: 0.5, ease: "easeInOut" }}
+            style={{ width: "100%", height: "100%", position: "absolute" }}
+          >
+            {displayChildren}
+          </motion.div>
+        </AnimatePresence>
+
+
+        <Footer/>
+      </body>
+    </html>
+  );
+
+}

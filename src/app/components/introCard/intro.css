@@ -1,0 +1,112 @@
+@font-face {
+    font-family: "Pixelboy";
+    src: url("/fonts/Pixeboy.ttf") format("truetype"); /* Ensure the path is correct */
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'minecraft';
+    src: url('/fonts/minecraft.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'minecraftbold';
+    src: url('/fonts/minecraftbold.otf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+.intro-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 350px;
+    height: 500px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 17px;
+    font-weight: bold;
+    gap: 10px;
+    padding: 20px;
+    position: fixed;
+    top: 50%;
+    left: 38%;
+    transform: translate(-50%, -50%);
+    
+    
+
+    background: linear-gradient(135deg, 
+        rgb(215, 230, 255),  /* Light Blue */
+        rgb(97, 155, 255),  /* Mid Blue */
+        rgb(30, 59, 139)     /* Darker Blue */
+    );
+
+    /* Pixelated effect */
+    border: 8px solid rgb(0, 0, 0); /* Thick black border */
+    box-shadow: 4px 4px 0px rgb(0, 0, 0), 8px 8px 0px rgb(70, 70, 70); /* Game-like blocky shadow */
+    border-radius: 0; /* Remove rounded corners for a pixelated look */
+    
+    /* Pixel font */
+    font-family: 'minecraftbold'; /* Add this font */
+    z-index: 2;
+}
+
+/* Add hover effect for interactivity */
+.intro-wrapper:hover {
+    transform: translate(-50%, -54%);
+    box-shadow: 8px 8px 0px rgb(0, 0, 0), 12px 12px 0px rgb(40, 40, 40);
+}
+
+.myimg {
+    border: 5px solid;
+    border-radius: 50%;
+    border-color:black;
+
+}
+
+
+.name {
+    margin-top: 10px;
+}
+
+.info {
+    margin-top: 30px;
+}
+
+.cardnavigation {
+    position: fixed;
+    top: 50%;
+    left: 22.5%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    
+}
+
+.socials {
+    position: fixed;
+    top: 10%;
+    left: 80%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+
+}
+
+.content {
+    position: fixed;
+    top: 50%;
+    left: 70%;
+    transform: translate(-50%, -50%);
+}
