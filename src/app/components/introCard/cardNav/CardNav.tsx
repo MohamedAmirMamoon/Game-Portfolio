@@ -4,8 +4,14 @@ import Image from 'next/image';
 import './cardnav.css'
 
 
+interface CardNavProps {
+    img: string;
+    title: string;
+    w: number;
+    h: number;
+}
 
-export default function CardNav({ img , title, w, h }: { img: string; title: string; w: number; h: number; }) {
+export default function CardNav({ img , title, w, h }: CardNavProps) {
     
 
     return (
