@@ -37,12 +37,11 @@
     gap: 10px;
     padding: 20px;
     position: fixed;
-    top: 50%;
+    top: 48%;
     left: 38%;
     transform: translate(-50%, -50%);
+    margin: 20px; /* Ensures spacing between cards */
     
-    
-
     background: linear-gradient(135deg, 
         rgb(215, 230, 255),  /* Light Blue */
         rgb(97, 155, 255),  /* Mid Blue */
@@ -60,6 +59,7 @@
 }
 
 /* Add hover effect for interactivity */
+
 .intro-wrapper:hover {
     transform: translate(-50%, -54%);
     box-shadow: 8px 8px 0px rgb(0, 0, 0), 12px 12px 0px rgb(40, 40, 40);
@@ -73,8 +73,6 @@
 
 }
 
-
-
 .name {
     margin-top: 10px;
 }
@@ -86,7 +84,7 @@
 .cardnavigation {
     position: fixed;
     top: 50%;
-    left: 22.5%;
+    left: 23.5%;
     transform: translate(-50%, -50%);
     z-index: 1;
 
@@ -110,10 +108,9 @@
 }
 
 .content {
-    position: fixed;
-    top: 50%;
-    left: 70%;
-    transform: translate(-50%, -50%);
+    position: relative;
+    
+    transform: translate(60%, 60%);
 }
 
 
@@ -127,6 +124,7 @@
     transform: translate(-50%, -50%);
     font-family: 'minecraftbold';
     font-size: 50px;
+    padding-top: 40px;
 
 }
 
@@ -193,11 +191,8 @@
     .content {
         display: flex;
         flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
     }
-
+    
     /* ✅ Move `.socials` to the bottom but keep it in a row */
     .socials {
         position: fixed; /* Fix it at the bottom */
@@ -209,7 +204,7 @@
         justify-content: center; /* Center them properly */
         width: 100%;
         gap: 15px;
-        margin-top: 600px;
+        margin-top: 900px;
 
     }
 
@@ -224,11 +219,12 @@
 }
 
 
-@media (max-width: 800px) {
+@media (max-width: 1000px) {
     .intro-wrapper {
     
         margin-left: 90px;
     }
+    
 
 }
 /*!**********************************************************************************************************************************************************************************************************************************************************************************************!*\
@@ -320,99 +316,39 @@
 
 }
 /*!**********************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[10].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[10].use[3]!./src/app/components/introCard/contact/contact.css ***!
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[10].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[10].use[3]!./src/app/components/introCard/contact/Contact.css ***!
   \**********************************************************************************************************************************************************************************************************************************************************************************************/
-.contact-button {
-    width: 100px;
-    height: 100px;
-    background: linear-gradient(to bottom, #96b6da, #567496); /* Retro Game Boy green */
-    border: 4px solid #35475c; /* Darker green border */
-    border-radius: 6px; /* Slight curve to mimic old screens */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    font-family: 'Press Start 2P', sans-serif; /* Pixel font */
-    font-size: 8px;
-    color: #35393e;
-    text-transform: uppercase;
-    text-shadow: 1px 1px 0 #2c3820;
-    position: relative;
-    box-shadow: inset -3px -3px #566d87, inset 3px 3px #84a4c8; /* Pixel shadow */
-    image-rendering: pixelated;
+.contact-image {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  image-rendering: pixelated;
+  animation: fade-slide-in 0.8s ease-out forwards, 
+            bounce 0.6s ease-out 0.8s;
 }
 
-/* Small black pixel dots on the sides */
-.contact-button::before,
-.contact-button::after {
-  content: "";
-  width: 4px;
-  height: 4px;
-  background: #2c3820;
-  position: absolute;
-  left: 6px;
+.contact-image:hover {
+  animation: hover-bounce 0.5s ease-in-out forwards;
 }
-
-.contact-button::before {
-  top: 6px; /* Top-left dot */
-}
-
-.contact-button::after {
-  bottom: 6px; /* Bottom-left dot */
-}
-
-/* Icon Styling */
-.contact-icon {
-    width: 20px;
-    height: 20px;
-    background-image: url('https://upload.wikimedia.org/wikipedia/commons/5/50/Pixel_Art_Man.png'); /* Replace with your own pixel icon */
-    background-size: contain;
-    background-repeat: no-repeat;
-    image-rendering: pixelated;
-}
-
-
 
 @keyframes bounce {
-    0%, 100% { transform: translateY(0); }
-    30% { transform: translateY(-10px); }
-    50% { transform: translateY(0); }
-    70% { transform: translateY(-5px); }
+  0%, 100% { transform: translateY(0); }
+  30% { transform: translateY(-10px); }
+  50% { transform: translateY(0); }
+  70% { transform: translateY(-5px); }
 }
 
-.contact-button {
-    animation: fade-slide-in 0.8s ease-out forwards, 
-                bounce 0.6s ease-out 0.8s; /* Bounce starts AFTER fade-in */
-}
-
-.contact-button:hover {
-  animation: hover-bounce 0.5s ease-in-out forwards;
-  gap: 12px;
-  cursor: pointer;
-  
-}
-
-/* Hover Bounce Animation */
 @keyframes hover-bounce {
   0% { transform: scale(1); }
-  30% { transform: scale(1.1); } /* Slightly larger */
-  50% { transform: scale(1); } /* Back to normal */
-  70% { transform: scale(1.05); } /* Small bounce */
-  100% { transform: scale(1.08); }
+  30% { transform: scale(1.2); }
+  50% { transform: scale(1.1); }
+  70% { transform: scale(1.15); }
+  100% { transform: scale(1.2); }
 }
 
-@media (max-width: 1200px) {
-  .contact-button {
-    width: 50px;
-    height: 50px;
-    font-size: 0px;
-  }
-  .contact-button img {
-    width: 50%;
-    height: 50%;
-  }
-
+/* Media query uses classes for small screens */
+.contact-image-small {
+  width: 50%;
+  height: 50%;
 }
 /*!********************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[10].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[10].use[3]!./src/app/components/introCard/routeContent/routecontent.css ***!
@@ -500,6 +436,7 @@ a {
       justify-content: center;
       align-items: center;
       position: absolute;
+      width: 80%;
       
       top: 10px;
       left: 50%;

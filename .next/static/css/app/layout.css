@@ -43,6 +43,7 @@ a {
       justify-content: center;
       align-items: center;
       position: absolute;
+      width: 80%;
       
       top: 10px;
       left: 50%;

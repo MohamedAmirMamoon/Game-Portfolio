@@ -1,62 +1,62 @@
 .project-item {
-    background-color: black; /* Black background */
-    color: white; /* White text for contrast */
+    background-color: black;
+    color: white;
     padding: 20px;
-    border-radius: 10px; /* Rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow effect */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     width: 350px;
     text-align: center;
-    margin: 20px auto; /* Center the card */
-    
+    margin: 20px auto;
 }
 
 .project-item h4 {
     margin-bottom: 10px;
+    font-family: 'minecraftbold';
 }
 
-.project-item button {
-    border: none;
-    background-color: transparent;
-    padding: 10px 20px;
-    color: white;
-    border-radius: 5px;
-    cursor: pointer;
+.image-container {
     position: relative;
-    transition: color 0.3s ease-in-out;
+    cursor: pointer;
+    overflow: hidden;
+    transition: transform 0.3s ease;
 }
 
-/* Create a smooth underline effect */
-.project-item button::after {
-    content: "";
+.image-container img {
+    transition: transform 0.3s ease;
+    border-radius: 8px;
+}
+
+.image-container:hover img {
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+/* Add a subtle glow effect on hover */
+.image-container::after {
+    content: '';
     position: absolute;
-    left: 50%;
-    bottom: 0;
-    width: 0%;
-    height: 2px;
-    background-color: white;
-    transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
-}
-
-/* Expand underline on hover */
-.project-item button:hover::after {
-    width: 100%;
+    top: 0;
     left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0);
+    transition: background 0.3s ease;
+    border-radius: 8px;
 }
-@media (max-width: 768px) { /* iPhones and smaller tablets */
-    .card-container {
-        flex-direction: column; /* Stack cards vertically */
-    }
 
-    .project-card {
-        max-width: 90%; /* Use most of the screen width */
-    }
+.image-container:hover::after {
+    background: rgba(255, 255, 255, 0.1);
+}
 
+@media (max-width: 768px) {
     .project-item {
-        width: 50%;
+        width: 90%;
         height: auto;
     }
-    .project-item img {
-        width: 50%;
+    
+    .image-container img {
+        width: 100%;
         height: auto;
+        max-width: 300px;
     }
 }

@@ -34,12 +34,11 @@
     gap: 10px;
     padding: 20px;
     position: fixed;
-    top: 50%;
+    top: 48%;
     left: 38%;
     transform: translate(-50%, -50%);
+    margin: 20px; /* Ensures spacing between cards */
     
-    
-
     background: linear-gradient(135deg, 
         rgb(215, 230, 255),  /* Light Blue */
         rgb(97, 155, 255),  /* Mid Blue */
@@ -57,6 +56,7 @@
 }
 
 /* Add hover effect for interactivity */
+
 .intro-wrapper:hover {
     transform: translate(-50%, -54%);
     box-shadow: 8px 8px 0px rgb(0, 0, 0), 12px 12px 0px rgb(40, 40, 40);
@@ -70,8 +70,6 @@
 
 }
 
-
-
 .name {
     margin-top: 10px;
 }
@@ -83,7 +81,7 @@
 .cardnavigation {
     position: fixed;
     top: 50%;
-    left: 22.5%;
+    left: 23.5%;
     transform: translate(-50%, -50%);
     z-index: 1;
 
@@ -107,10 +105,9 @@
 }
 
 .content {
-    position: fixed;
-    top: 50%;
-    left: 70%;
-    transform: translate(-50%, -50%);
+    position: relative;
+    
+    transform: translate(60%, 60%);
 }
 
 
@@ -124,6 +121,7 @@
     transform: translate(-50%, -50%);
     font-family: 'minecraftbold';
     font-size: 50px;
+    padding-top: 40px;
 
 }
 
@@ -190,11 +188,8 @@
     .content {
         display: flex;
         flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
     }
-
+    
     /* ✅ Move `.socials` to the bottom but keep it in a row */
     .socials {
         position: fixed; /* Fix it at the bottom */
@@ -206,7 +201,7 @@
         justify-content: center; /* Center them properly */
         width: 100%;
         gap: 15px;
-        margin-top: 600px;
+        margin-top: 900px;
 
     }
 
@@ -221,10 +216,11 @@
 }
 
 
-@media (max-width: 800px) {
+@media (max-width: 1000px) {
     .intro-wrapper {
     
         margin-left: 90px;
     }
+    
 
 }
