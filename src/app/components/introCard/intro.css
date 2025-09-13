@@ -26,7 +26,7 @@
     align-items: center;
     justify-content: center;
     max-width: 350px;
-    height: 500px;
+    height: 630px;
     cursor: pointer;
     text-align: center;
     font-size: 17px;
@@ -35,7 +35,7 @@
     padding: 20px;
     position: fixed;
     top: 48%;
-    left: 38%;
+    left: 35.9%;
     transform: translate(-50%, -50%);
     margin: 20px; /* Ensures spacing between cards */
     
@@ -60,6 +60,7 @@
 .intro-wrapper:hover {
     transform: translate(-50%, -54%);
     box-shadow: 8px 8px 0px rgb(0, 0, 0), 12px 12px 0px rgb(40, 40, 40);
+
 }
 
 .myimg {
@@ -105,9 +106,10 @@
 }
 
 .content {
-    position: relative;
+    position: fixed;
+    top:30%;
+    right: 20%;
     
-    transform: translate(60%, 60%);
 }
 
 
@@ -138,6 +140,7 @@
     font-family: 'minecraftbold';
     font-size: 30px;
 }
+
 
 @media (max-width: 1200px) { 
     .home-title {
@@ -201,8 +204,7 @@
         justify-content: center; /* Center them properly */
         width: 100%;
         gap: 15px;
-        margin-top: 900px;
-
+        top: 80%;
     }
 
     .info {
@@ -216,13 +218,59 @@
 }
 
 
+
 @media (max-width: 1000px) {
+    
     
     .cardnavigation {
         visibility: hidden;
     }
-    
     .content {
         visibility: hidden;
     }
+    .intro-wrapper {
+        position: fixed;
+        top: 47%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1000;
+    }
+    .socials {
+        position: fixed; /* Fix it at the bottom */
+        bottom: 20px; /* Adjust to fit your design */
+        left: 50%; /* Move to the center */
+        transform: translateX(-50%); /* Ensure perfect centering */
+        display: flex;
+        flex-direction: row; /* Keep social icons in a row */
+        justify-content: center; /* Center them properly */
+        width: 100%;
+        gap: 15px;
+        top: 80%;
+    }
+    .home-title {
+        font-size: 20px;
+    }
 }
+
+@media (max-height: 850px) {
+    .socials {
+        zoom: 0.8;
+        top: 85%;
+    }
+    .intro-wrapper {
+        zoom: 0.8
+
+    };
+}
+
+@media (max-height: 650px) {
+    .socials {
+        zoom: 0.5;
+        top: 85%;
+    }
+    .intro-wrapper {
+        zoom: 0.5
+
+    };
+}
+
