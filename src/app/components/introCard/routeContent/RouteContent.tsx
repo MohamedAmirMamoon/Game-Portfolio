@@ -38,7 +38,7 @@ export default function RouteContent({ activeSection }: ActiveSectionProps) {
             {activeSection === "resume" && (
                 <div className="actualcontent">
                 <h2>Experience</h2>
-                <p>SWE @ Tip Top Technologies<br></br> <br></br>Full-stack Engineer Intern @ IBM<br></br> <br></br> Data Science Intern @ County of Marin</p>
+                <p>SWE @ Ticketmaster<br></br> <br></br>Full-stack Fellow @ IBM<br></br> <br></br> SWE @ MindWave AI</p>
                 </div>
             )}
             

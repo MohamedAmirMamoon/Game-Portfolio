@@ -12,11 +12,6 @@ export default function Barber() {
                 <p>💈 Set Up a Haircut Appointment 💈</p>
             </div>
             <div className="calendly">
-                <p>Calendly:</p>
-
-
-                <p>Book a Haircut!!!</p>
-
 
                 <div className="book">
                     <iframe 

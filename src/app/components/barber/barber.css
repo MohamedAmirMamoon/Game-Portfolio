@@ -19,43 +19,64 @@
     font-style: normal;
 }
 
+@media (max-width: 600px) {
 
+    .barber-title {
+        margin-top: 100px;
+        margin-bottom: 40px;
+        color: white;
+
+    }
+    .calendly {
+        margin: 0;
+        width: calc(100vw - 40px); 
+        height: 50vh;         
+        /* Add these to ensure centering */
+        margin: 30px auto;    /* Centers the container */
+        margin-top: 30px;     /* Restore top margin */
+    }
+   
+    .barber-title {
+        font-size: 1.2rem;    
+        margin-top: 100px;
+        color: white;
+    }
+}
 .barber-title {
     justify-content: center;
     align-items: center;
     text-align: center;
-    margin-top: 120px;
-    font-family: 'minecraftbold';
-    font-size: 50px;
+    /* Updated margin-top and font-size as requested */
+    margin-top: 100px;
+    font-family: "minecraftbold";
+    font-size: 1.2rem;
     margin-bottom: 10px;
-
-}
-
-.calendly {
+    /* Added white color as requested */
+    color: white;
+  }
+  
+  .calendly {
     background-color: rgb(255, 255, 255);
-    display: flex;           /* Add this */
+    display: flex;
     justify-content: center;
-    align-items: center;     /* This will now work with display: flex */
+    align-items: center;
     text-align: center;
-    margin-top: 50px;
-    font-family: 'minecraft';
+    font-family: "minecraft";
     font-size: 30px;
     border: black;
     border-style: solid;
     border-width: 2px;
     border-radius: 10px;
-    margin-left: 100px;
-    margin-right: 100px;
+    /* Updated margins and width for very small side margins */
+    margin: 30px auto;
     margin-top: 30px;
-    text-align: center;
-    font-size: 30px;
+    width: calc(100vw - 40px);
+    height: 50vh;
     font-family: "Pixelboy";
-    position: relative; /* Add this to make it a positioning context */
-    width: 700;
-    height: 60vh
-}
-
-.calendly-inline-widget {
+    position: relative;
+  }
+  
+  .calendly-inline-widget {
     position: absolute;
     top: 0;
     left: 0;
@@ -64,25 +85,21 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    height: 60vh;
+    height: 50vh;
     border-radius: 5px;
-    /* Optional: if you want to ensure it's clickable */
     z-index: 1;
-}
-
-@media (max-width: 1200px) {
+  }
+  
+  @media (max-width: 1200px) {
     .barber-title {
-    
-        font-size: 1.5rem;
-        margin-top: 180px;
-        margin-bottom: 40px;
-        color: white;
+      font-size: 1.2rem;
+      margin-top: 100px;
+      margin-bottom: 40px;
+      color: white;
     }
-
-    .calendly img{
-        width: 300px;
-        height: 300px;
-    
+  
+    .calendly img {
+      width: 300px;
+      height: 300px;
     }
-
-}
+  }

@@ -12,11 +12,11 @@
       "static/css/app/page.css",
       "static/chunks/app/page.js"
     ],
-    "/components/introCard/page": [
+    "/components/me/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/css/app/components/introCard/page.css",
-      "static/chunks/app/components/introCard/page.js"
+      "static/css/app/components/me/page.css",
+      "static/chunks/app/components/me/page.js"
     ],
     "/components/projectDisplay/page": [
       "static/chunks/webpack.js",
@@ -24,17 +24,17 @@
       "static/css/app/components/projectDisplay/page.css",
       "static/chunks/app/components/projectDisplay/page.js"
     ],
+    "/components/introCard/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/components/introCard/page.css",
+      "static/chunks/app/components/introCard/page.js"
+    ],
     "/components/barber/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/css/app/components/barber/page.css",
       "static/chunks/app/components/barber/page.js"
-    ],
-    "/components/me/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/components/me/page.css",
-      "static/chunks/app/components/me/page.js"
     ]
   }
 }

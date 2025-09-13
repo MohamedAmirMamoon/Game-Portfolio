@@ -33,7 +33,7 @@ export default function ProjectDisplay() {
                             title="Dreamwalkers"
                             w={300}
                             h={200}
-                            link="https://github.com/MohamedAmirMamoon/Dreamwalkers"
+                            link="https://dreamwalkers-w1ca.vercel.app/"
                         />
                     </div>
                 </div>

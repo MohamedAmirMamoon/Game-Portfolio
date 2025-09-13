@@ -35,18 +35,18 @@ export default function RootLayout({
       <body
         
         style={{
-          minHeight: "750px", // ✅ Ensures no scrolling until height exceeds 750px
+          minHeight: "100vh", // Change from 750px to full viewport height
           margin: 0,
-          overflowY: "auto", // ✅ Enables vertical scrolling when needed
-          display: "flex", // ✅ Enables flexbox
-          flexDirection: "column", // ✅ Aligns content properly
-          justifyContent: "center", // ✅ Centers content vertically (only if it fits)
-          alignItems: "center", // ✅ Centers horizontally
+          overflowY: "auto", 
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "flex-start", // Change from "center" to "flex-start"
+          alignItems: "center",
           backgroundImage: "url('/adventuretime.png')",
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center center",
-          backgroundAttachment: "fixed",
-          backgroundSize: "cover",
+          backgroundAttachment: "fixed", // Keep this - crucial for the effect you want
+          backgroundSize: "cover", // Keep this - ensures image always covers viewport
         }}
       >
         <nav className="navbar">

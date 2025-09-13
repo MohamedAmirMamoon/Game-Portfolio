@@ -217,10 +217,12 @@
 
 
 @media (max-width: 1000px) {
-    .intro-wrapper {
     
-        margin-left: 90px;
+    .cardnavigation {
+        visibility: hidden;
     }
     
-
+    .content {
+        visibility: hidden;
+    }
 }

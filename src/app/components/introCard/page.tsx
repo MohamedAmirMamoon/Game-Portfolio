@@ -29,7 +29,7 @@ export default function IntroCard() {
                 <div className='intro-wrapper'>
                     <div className="myimg">
                         <Image
-                            src="/portrait.jpeg"
+                            src="/juniorportrait.jpeg"
                             alt="Picture of the author"
                             width={200}
                             height={200}
@@ -48,8 +48,7 @@ export default function IntroCard() {
                     <div className="info" >
                         <p>Student at USC</p>
                         <p> - </p>
-                        <p>SWE Intern @ Mindwave AI</p>
-                        <p>Prev @ IBM</p>
+                        <p>Prev SWE Intern @ Ticketmaster</p>
                     </div>
                 </div>
 
@@ -72,8 +71,10 @@ export default function IntroCard() {
 
             <div className="content">
                 <RouteContent activeSection={activeSection}/>
-
             </div>
+
+
+        
 
            
 

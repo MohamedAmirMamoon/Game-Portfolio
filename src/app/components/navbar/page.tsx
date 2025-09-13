@@ -17,7 +17,7 @@ export default function Navbar() {
             <button onClick={() => router.push('/components/introCard')}>Home</button>
             <button onClick={() => router.push('/components/projectDisplay')}>Projects</button>
             <button onClick={() => router.push('/components/barber')}>Barber</button>
-            <button onClick={() => window.open('https://docs.google.com/document/d/1nyd4RCNpDXveD-l6aKNQyvKQi3KfjtLsfLNrc7LmwSQ/edit?tab=t.0', "_blank")}> Resume</button>
+            <button onClick={() => window.open('https://drive.google.com/file/d/1TIySa9VNew73qhI_jsrR6mmIBEYCAlM7/view?usp=sharing', "_blank")}> Resume</button>
             <button onClick={() => router.push('/components/me')}> Me</button>
         </div>
     );

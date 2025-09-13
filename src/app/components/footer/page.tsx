@@ -4,8 +4,8 @@ import './footer.css';
 export default function Footer() {
   return (
     <div className="footer-wrapper">
-        <p>Copyright © 2023 Mohamed Amir Mamoon</p>
-        <p>💈 flip through pages for haircut</p>
+        <p>copyright © 2023 Mohamed Amir Mamoon</p>
+        <p>💈 flip through for cuts</p>
     </div>
   );
 }
