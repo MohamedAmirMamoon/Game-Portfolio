@@ -20,7 +20,7 @@ export default function RouteContent({ activeSection }: ActiveSectionProps) {
             {activeSection === "bio" && (
             <div className="actualcontent">
             <h2>Bio</h2>
-            <p>What's up!<br></br> <br></br>My name is Mo and you're currently stalking me!<br></br> <br></br>😆</p>
+            <p>What's up!<br></br> <br></br>My name is Amir and you're currently stalking me!<br></br> <br></br>😆</p>
             </div>
             )}
             {activeSection === "skills" && (
@@ -31,7 +31,7 @@ export default function RouteContent({ activeSection }: ActiveSectionProps) {
             )}
             {activeSection === "projects" && (
                 <div className="actualcontent">
-                <h2>Projects - links in nav</h2>
+                <h2>Projects - access in nav</h2>
                 <p>- Superday<br></br>- Ride Share<br></br>- Dreamwalkers<br></br>- UFC Fight Predictor<br></br>- Chosn Relationships</p>
                 </div>
             )}
