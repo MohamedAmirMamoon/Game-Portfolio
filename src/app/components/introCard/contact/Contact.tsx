@@ -19,6 +19,9 @@ const Contact = ({ img, title, link }: ContactProps) => {
     return (
         <a
             className="contact-link"
+            /* Drives the per-network hover colour in contact.css. Derived from
+               `title` so call sites don't have to pass a second prop. */
+            data-social={title.toLowerCase()}
             href={link}
             title={title}
             aria-label={title}

@@ -391,69 +391,146 @@
   \**********************************************************************************************************************************************************************************************************************************************************************************************/
 /* ==========================================================================
    Contact / socials icons.
-   Sizing lives here (it used to be an inline `${w}px` style) so it can be
-   fluid, and the <a> guarantees a >=44px touch target on mobile.
+   --------------------------------------------------------------------------
+   IMPORTANT — how these icons are built: each PNG is a solid black rounded
+   square with the logo *punched out* as a transparent hole (mail2/insta2/
+   linkedin2/github2 are ~75% opaque black; the glyph itself has alpha 0).
+
+   That means whatever sits BEHIND the <img> becomes the glyph colour. Left
+   unstyled, the page's pixel-art background showed through the letters, so
+   every icon picked up different background noise and read inconsistently.
+   The `.contact-link` tile below supplies a solid colour behind the knockout
+   so all four glyphs match — and hovering swaps that colour for the brand
+   one, tinting the logo itself.
    ========================================================================== */
 
 .contact-link {
+  /* Cream reads cleanly through the knockout against the black icon body. */
+  --tile: #f7f3e8;
+  --brand: #f7f3e8;
+
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  box-sizing: border-box;
   /* Touch target: never smaller than 44x44 even as the icon shrinks. */
+  width: clamp(2.75rem, 2.25rem + 1.5vw, 3.5rem);
   min-width: 44px;
   min-height: 44px;
-  padding: 2px;
+  aspect-ratio: 1 / 1;
   cursor: pointer;
-  border-radius: 4px;
   flex: none;
+
+  background-color: var(--tile);
+  /* Matches the squircle radius baked into the icon art, so the tile hides
+     behind the black body instead of peeking out as a second frame. */
+  border-radius: 24%;
+  border: 2px solid #000000;
+  box-shadow: 0 3px 0 rgba(0, 0, 0, 0.5);
+
+  /* Entrance below animates `translate`; hover animates `scale`. They are
+     separate CSS properties (not both packed into `transform`), so neither
+     clobbers the other. */
+  animation: social-in 0.5s cubic-bezier(0.2, 0.8, 0.3, 1) backwards;
+  transition: translate 0.18s cubic-bezier(0.2, 0.8, 0.3, 1),
+              scale 0.18s cubic-bezier(0.2, 0.8, 0.3, 1),
+              background-color 0.22s ease,
+              background-image 0.22s ease,
+              box-shadow 0.18s ease;
+}
+
+/* Staggered entrance — reads as a little cascade rather than all four
+   popping at once. */
+.contact-link:nth-child(1) { animation-delay: 0.05s; }
+.contact-link:nth-child(2) { animation-delay: 0.13s; }
+.contact-link:nth-child(3) { animation-delay: 0.21s; }
+.contact-link:nth-child(4) { animation-delay: 0.29s; }
+
+/* Per-network hover colours. These are deliberately LIGHT tints of each
+   brand: the colour lands inside the glyph knockout, surrounded by the black
+   icon body, so a dark true-brand navy or near-black would disappear. */
+.contact-link[data-social="contact"]  { --brand: #ff9b7a; }
+.contact-link[data-social="insta"]    { --brand: #ff6bab; }
+.contact-link[data-social="linkedin"] { --brand: #5cb3ff; }
+.contact-link[data-social="github"]   { --brand: #d2b3ff; }
+
+.contact-link:hover,
+.contact-link:focus-visible {
+  background-color: var(--brand);
+  translate: 0 -4px;
+  scale: 1.08;
+  box-shadow: 0 7px 0 rgba(0, 0, 0, 0.45);
+}
+
+/* Instagram's identity is its gradient, so tint the glyph with one. */
+.contact-link[data-social="insta"]:hover,
+.contact-link[data-social="insta"]:focus-visible {
+  background-image: linear-gradient(135deg, #ffdd77, #ff8a5c, #ff6bab, #c86dff);
+}
+
+/* Pressed: drop into the shadow for a physical button feel. */
+.contact-link:active {
+  translate: 0 1px;
+  scale: 1.02;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
 }
 
 .contact-link:focus-visible {
   outline: 4px solid #ffe066;
-  outline-offset: 2px;
+  outline-offset: 3px;
 }
 
 .contact-image {
   display: block;
-  width: clamp(2rem, 1.5rem + 2vw, 3.125rem);
-  height: auto;
-  aspect-ratio: 1 / 1;
+  width: 100%;
+  height: 100%;
   object-fit: contain;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-  image-rendering: pixelated;
-  animation: fade-slide-in 0.8s ease-out forwards,
-            bounce 0.6s ease-out 0.8s;
+  pointer-events: none;
+  /* NO `image-rendering: pixelated` here. These are smooth 512px logos being
+     drawn at ~50px; nearest-neighbour downscaling threw away detail and left
+     the curved edges visibly jagged. Let the browser filter them. */
 }
 
-.contact-link:hover .contact-image {
-  animation: hover-bounce 0.5s ease-in-out forwards;
+@keyframes social-in {
+  from {
+    opacity: 0;
+    translate: 0 10px;
+    scale: 0.8;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+    scale: 1;
+  }
 }
 
-@keyframes fade-slide-in {
-  from { opacity: 0; transform: translateY(12px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
+/* `backwards` (not `forwards`/`both`) is load-bearing: it holds the from-state
+   during the stagger delay, then stops applying once the animation ends. A
+   filled animation would keep overriding `translate`/`scale` forever and the
+   hover transition would never move. */
 
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  30% { transform: translateY(-10px); }
-  50% { transform: translateY(0); }
-  70% { transform: translateY(-5px); }
-}
-
-@keyframes hover-bounce {
-  0% { transform: scale(1); }
-  30% { transform: scale(1.2); }
-  50% { transform: scale(1.1); }
-  70% { transform: scale(1.15); }
-  100% { transform: scale(1.2); }
-}
-
-/* On touch devices the hover state sticks after a tap — skip the bounce. */
+/* On touch devices hover sticks after a tap, so drop the lift entirely and
+   keep only the colour change as tap feedback. */
 @media (hover: none) {
-  .contact-link:hover .contact-image {
-    animation: fade-slide-in 0.8s ease-out forwards;
+  .contact-link:hover {
+    translate: 0 0;
+    scale: 1;
+    box-shadow: 0 3px 0 rgba(0, 0, 0, 0.5);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-link {
+    animation: none;
+  }
+
+  /* Colour still changes on hover — only the movement is removed. */
+  .contact-link:hover,
+  .contact-link:focus-visible,
+  .contact-link:active {
+    translate: 0 0;
+    scale: 1;
   }
 }
 
