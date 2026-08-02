@@ -1,105 +1,118 @@
-@font-face {
-    font-family: "Pixelboy";
-    src: url("/fonts/Pixeboy.ttf") format("truetype"); /* Ensure the path is correct */
-    font-weight: normal;
-    font-style: normal;
+/* ==========================================================================
+   Barber / booking page
+   --------------------------------------------------------------------------
+   The @font-face blocks for Pixelboy / minecraft / minecraftbold live in
+   globals.css — do NOT re-declare them here.
+
+   Vertical navbar/footer clearance comes from `.page-shell` in layout.tsx
+   (padding-top: var(--nav-h) / padding-bottom: var(--footer-h)), so this file
+   must not add manual `margin-top: 100px` style offsets.
+
+   Order matters: base rules first, media-query overrides after.
+   ========================================================================== */
+
+.barber-page {
+  width: 100%;
+  max-width: var(--content-max);
+  margin-inline: auto;
+  padding-inline: var(--page-pad);
+  padding-block: clamp(1rem, 3vw, 2.5rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 0;
 }
 
-@font-face {
-    font-family: 'minecraft';
-    src: url('/fonts/minecraft.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'minecraftbold';
-    src: url('/fonts/minecraftbold.otf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@media (max-width: 600px) {
-
-    .barber-title {
-        margin-top: 100px;
-        margin-bottom: 40px;
-        color: white;
-
-    }
-    .calendly {
-        margin: 0;
-        width: calc(100vw - 40px); 
-        height: 50vh;         
-        /* Add these to ensure centering */
-        margin: 30px auto;    /* Centers the container */
-        margin-top: 30px;     /* Restore top margin */
-    }
-   
-    .barber-title {
-        font-size: 1.2rem;    
-        margin-top: 100px;
-        color: white;
-    }
-}
 .barber-title {
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    /* Updated margin-top and font-size as requested */
-    margin-top: 100px;
-    font-family: "minecraftbold";
-    font-size: 1.2rem;
-    margin-bottom: 10px;
-    /* Added white color as requested */
-    color: white;
-  }
-  
+  width: 100%;
+  text-align: center;
+  font-family: "minecraftbold", "minecraft", monospace;
+  /* Fluid: ~1.05rem at 320px up to ~2rem on large desktops. */
+  font-size: clamp(1.05rem, 0.8rem + 1.6vw, 2rem);
+  line-height: 1.35;
+  color: #ffffff;
+  /* Keeps the title legible over the dark background artwork. */
+  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.8);
+  margin-bottom: clamp(1rem, 3vw, 2rem);
+  overflow-wrap: break-word;
+  text-wrap: balance;
+}
+
+/* White bordered, rounded booking panel that hosts the Calendly iframe.
+   Width: never wider than its padded container (no 100vw — that ignores the
+   scrollbar and causes horizontal overflow) and capped so it doesn't go
+   full-bleed on very large monitors.
+   Height: viewport-relative but with a px floor, because the Calendly flow
+   (month grid + time-slot column) is unusable below ~640-700px tall. */
+.calendly {
+  position: relative;
+  box-sizing: border-box;
+  width: min(100%, 900px);
+  margin-inline: auto;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  text-align: center;
+  font-family: "Pixelboy", "minecraft", monospace;
+  font-size: clamp(1rem, 0.9rem + 0.6vw, 1.75rem);
+  background-color: #ffffff;
+  border: 2px solid #000000;
+  border-radius: 10px;
+  padding: clamp(6px, 1.2vw, 12px);
+  /* 100vh-based fallback first for browsers without dvh support. */
+  height: clamp(700px, 80vh, 960px);
+  height: clamp(700px, 80dvh, 960px);
+  min-height: 700px;
+}
+
+/* Frame around the iframe: clips it to the panel's rounded corners and gives
+   the absolutely positioned iframe a definite box to fill. */
+.book {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.calendly-inline-widget {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: 6px;
+  display: block;
+  z-index: 1;
+}
+
+/* --------------------------------------------------------------------------
+   Tablets / large phones
+   -------------------------------------------------------------------------- */
+@media (max-width: 900px) {
   .calendly {
-    background-color: rgb(255, 255, 255);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    font-family: "minecraft";
-    font-size: 30px;
-    border: black;
-    border-style: solid;
-    border-width: 2px;
-    border-radius: 10px;
-    /* Updated margins and width for very small side margins */
-    margin: 30px auto;
-    margin-top: 30px;
-    width: calc(100vw - 40px);
-    height: 70vh;
-    font-family: "Pixelboy";
-    position: relative;
-  }
-  
-  .calendly-inline-widget {
-    position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
-    height: 120%;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    height: 70vh;
-    border-radius: 5px;
-    z-index: 1;
+    height: clamp(660px, 85vh, 900px);
+    height: clamp(660px, 85dvh, 900px);
+    min-height: 660px;
   }
-  
-  @media (max-width: 1200px) {
-    .barber-title {
-      font-size: 1.2rem;
-      margin-top: 100px;
-      margin-bottom: 40px;
-      color: white;
-    }
-  
-    .calendly img {
-      width: 300px;
-      height: 300px;
-    }
+}
+
+/* --------------------------------------------------------------------------
+   Phones — Calendly switches to its stacked mobile layout, which needs a bit
+   less height, but still far more than the old 50vh/70vh.
+   -------------------------------------------------------------------------- */
+@media (max-width: 600px) {
+  .barber-page {
+    padding-block: clamp(0.75rem, 3vw, 1.5rem);
   }
+
+  .calendly {
+    padding: 6px;
+    border-radius: 8px;
+    height: clamp(620px, 88vh, 860px);
+    height: clamp(620px, 88dvh, 860px);
+    min-height: 620px;
+  }
+}

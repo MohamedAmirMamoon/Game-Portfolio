@@ -1,13 +1,46 @@
+/* Fonts (Pixelboy / minecraft / minecraftbold) are declared once in
+   src/app/globals.css — do not re-declare them here. */
+
 .footer-wrapper {
-    display: flex;
-    flex-direction: row;
     position: fixed;
     bottom: 0;
     left: 0;
+    right: 0;
     width: 100%;
-    color: white;
+    max-width: 100%;
+    z-index: 900; /* above page content, below the navbar (1000) */
 
     display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     justify-content: space-between;
-    padding: 16px;
+    align-items: center;
+    gap: clamp(0.25rem, 1.5vw, 1rem);
+
+    /* Honour the iOS home-indicator inset on top of the normal padding. */
+    padding: clamp(0.5rem, 1.5vw, 1rem) var(--page-pad);
+    padding-bottom: calc(clamp(0.5rem, 1.5vw, 1rem) + env(safe-area-inset-bottom, 0px));
+
+    color: white;
+    font-size: clamp(0.625rem, 2vw, 0.875rem);
+    line-height: 1.3;
+    text-align: center;
+
+    /* The bar spans the full width and page content scrolls behind it, so it
+       must not swallow clicks; the text itself stays selectable. */
+    pointer-events: none;
+}
+
+.footer-wrapper > * {
+    pointer-events: auto;
+    min-width: 0;
+}
+
+/* Narrow screens: stack the two items instead of letting them collide. */
+@media (max-width: 560px) {
+    .footer-wrapper {
+        flex-direction: column;
+        justify-content: center;
+        gap: 0.125rem;
+    }
 }

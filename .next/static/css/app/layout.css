@@ -1,87 +1,28 @@
-/*!*****************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[10].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[10].use[3]!./src/app/globals.css ***!
-  \*****************************************************************************************************************************************************************************************************************************************************************/
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-}
-
-.navbar {
-  position: fixed;
-  top: 20px;
-  left: 100px;
-  z-index: 1000; /* Ensures it stays on top */
-}
-
-@media (max-width: 768px) { /* Adjust for smaller screens */
-  .navbar {
-      justify-content: center;
-      align-items: center;
-      position: absolute;
-      width: 80%;
-      
-      top: 10px;
-      left: 50%;
-      transform: translateX(-50%);
-  }
-  .footer {
-      font-size: 10px;
-  }
-}
 /*!**********************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[10].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[10].use[3]!./src/app/components/footer/footer.css ***!
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[10].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[10].use[3]!./src/app/components/navbar/navbar.css ***!
   \**********************************************************************************************************************************************************************************************************************************************************************************/
-.footer-wrapper {
-    display: flex;
-    flex-direction: row;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    color: white;
+/* Fonts (Pixelboy / minecraft / minecraftbold) are declared once in
+   src/app/globals.css — do not re-declare them here. */
 
-    display: flex;
-    justify-content: space-between;
-    padding: 16px;
-}
-/*!**********************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[10].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[10].use[3]!./src/app/components/navbar/navbar.css ***!
-  \**********************************************************************************************************************************************************************************************************************************************************************************/
 .navbar-wrapper {
     display: flex;
     flex-direction: row;
-    top: 10%;
-    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: clamp(0.375rem, 1.5vw, 1.25rem);
+    width: 100%;
 }
 
 .navbar-wrapper button {
-    width: 100px;
-    height: 30px;
+    /* Fluid instead of fixed 100px x 30px. Height comes from padding +
+       min-height so the label can never be clipped, and the tap target stays
+       at least ~44px tall on touch-sized screens. */
+    flex: 0 1 auto;
+    min-width: clamp(4.25rem, 14vw, 6.5rem);
+    max-width: 100%;
+    min-height: 2.75rem; /* ~44px touch target */
+    padding: clamp(0.375rem, 1.2vw, 0.625rem) clamp(0.5rem, 2vw, 1rem);
     background: linear-gradient(to bottom, #96b6da, #567496); /* Retro Game Boy green */
     border: 4px solid #35475c; /* Darker green border */
     border-radius: 6px; /* Slight curve to mimic old screens */
@@ -91,20 +32,389 @@ a {
     justify-content: center;
     gap: 8px;
     font-family: 'Press Start 2P', sans-serif; /* Pixel font */
-    font-size: 8px;
+    font-size: clamp(0.5rem, 1.6vw, 0.75rem);
+    line-height: 1.2;
     color: #35393e;
     text-transform: uppercase;
+    text-align: center;
     text-shadow: 1px 1px 0 #2c3820;
     position: relative;
     box-shadow: inset -3px -3px #566d87, inset 3px 3px #84a4c8; /* Pixel shadow */
     image-rendering: pixelated;
     cursor: pointer;
+    /* .navbar (globals.css) sets pointer-events: none on the full-width fixed
+       band so it doesn't swallow clicks meant for the page; re-enable them on
+       the actual controls. */
+    pointer-events: auto;
+    /* Long labels shrink rather than overflow the fixed band. */
+    overflow-wrap: break-word;
+    -webkit-tap-highlight-color: transparent;
 }
 
+/* Keyboard focus must be visible over the pixel gradient. */
+.navbar-wrapper button:focus-visible {
+    outline: 3px solid #fff8b0;
+    outline-offset: 2px;
+}
 
-@media (max-width: 768px) { /* Adjust for smaller screens */
-    .navbar-wrapper {
-        gap: 5px;
+/* From ~700px up the row fits comfortably on one line (matches the --nav-h
+   tier in globals.css), so drop the enforced touch-target height back toward
+   the original compact look. */
+@media (min-width: 700px) {
+    .navbar-wrapper button {
+        min-height: 2.25rem;
     }
-        
+}
+
+/* Very narrow phones: keep 5 buttons reachable across two wrapped rows. */
+@media (max-width: 380px) {
+    .navbar-wrapper button {
+        min-width: 3.75rem;
+        padding-inline: 0.375rem;
+    }
+}
+
+/*!*****************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[10].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[10].use[3]!./src/app/globals.css ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************/
+/* ==========================================================================
+   Global fonts — declared ONCE here. Component CSS files must NOT re-declare
+   these @font-face blocks (they used to be duplicated in intro.css,
+   project.css, barber.css, mem.css and routecontent.css).
+   ========================================================================== */
+
+@font-face {
+    font-family: "Pixelboy";
+    src: url("/fonts/Pixeboy.ttf") format("truetype"); /* Ensure the path is correct */
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'minecraft';
+    src: url('/fonts/minecraft.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'minecraftbold';
+    src: url('/fonts/minecraftbold.otf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* ==========================================================================
+   Shared layout contract
+   --------------------------------------------------------------------------
+   --nav-h / --footer-h are the vertical space the FIXED navbar / footer
+   occupy, including iOS safe-area insets. Page content must never be placed
+   inside those bands; `.page-shell` (applied to the route wrapper in
+   layout.tsx) already reserves them, so page CSS should NOT add its own
+   nav/footer offsets.
+
+   --page-pad is the horizontal page gutter, --content-max the max content
+   width. `.page-shell` deliberately does NOT apply --page-pad so pages are
+   free to own their own gutters without doubling up.
+   ========================================================================== */
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+
+  /* Below ~700px the 5-button navbar row can wrap to a second line (and does
+     on phones), so the reserved band is sized for TWO rows of ~44px tap
+     targets plus the navbar's top offset and gap. Deliberately generous: it is
+     also the safety margin for users with a large default font size. */
+  --nav-h: calc(clamp(7rem, 6.5rem + 2vw, 8rem) + env(safe-area-inset-top, 0px));
+  /* Narrow screens: the two footer texts stack onto two lines (three if the
+     copyright line itself wraps), so keep headroom. */
+  --footer-h: calc(clamp(3.75rem, 3.5rem + 2vw, 4.5rem) + env(safe-area-inset-bottom, 0px));
+
+  --page-pad: clamp(1rem, 4vw, 2.5rem);
+  --content-max: 1200px;
+}
+
+/* From ~600px up the footer's two items sit on one line. */
+@media (min-width: 600px) {
+  :root {
+    --footer-h: calc(clamp(3rem, 2.5rem + 1.5vw, 3.75rem) + env(safe-area-inset-bottom, 0px));
   }
+}
+
+/* From ~700px up all five buttons fit on a single row with headroom, so the
+   reserved band shrinks back to something close to the original design. */
+@media (min-width: 700px) {
+  :root {
+    --nav-h: calc(clamp(4.5rem, 4rem + 1.5vw, 5.75rem) + env(safe-area-inset-top, 0px));
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+/* ==========================================================================
+   Document / responsive hygiene
+   ========================================================================== */
+
+html {
+  /* Stop iOS Safari from inflating text when rotating to landscape. */
+  text-size-adjust: 100%;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+}
+
+body {
+  /* 100vh first as a fallback for browsers without dvh support. */
+  min-height: 100vh;
+  min-height: 100dvh;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background-image: url('/adventuretime.png');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+/* `background-attachment: fixed` is janky/broken on iOS Safari (and costly on
+   any touch device), so fall back to a scrolling background that still covers.
+   The <body> min-height keeps the image covering the whole page. */
+@media (max-width: 768px), (hover: none) and (pointer: coarse) {
+  body {
+    background-attachment: scroll;
+  }
+}
+
+/* Belt-and-braces guard against accidental horizontal scroll. Overflow should
+   still be fixed at the source in component CSS — this is the safety net.
+   Declared on the root only: root overflow propagates to the viewport, so it
+   suppresses horizontal scrolling without creating a clipping context that
+   would cut off the position: fixed navbar/footer. `clip` is preferred (it
+   doesn't break position: sticky); `hidden` is the fallback for older
+   browsers. */
+html {
+  overflow-x: hidden;
+  overflow-x: clip;
+}
+
+body {
+  max-width: 100%;
+}
+
+img,
+svg,
+iframe,
+video,
+canvas {
+  max-width: 100%;
+}
+
+img,
+svg {
+  height: auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ==========================================================================
+   Page shell — reserves the fixed navbar / footer bands.
+   Applied to the route wrapper in layout.tsx.
+   ========================================================================== */
+
+.page-shell {
+  width: 100%;
+  /* Grow to fill the viewport but never shrink below its own content, so pages
+     can be taller than the screen and scroll naturally. */
+  flex: 1 0 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  padding-top: var(--nav-h);
+  padding-bottom: var(--footer-h);
+}
+
+/* ==========================================================================
+   Navbar shell (the fixed <nav> wrapper; the button row lives in navbar.css)
+   ========================================================================== */
+
+.navbar {
+  position: fixed;
+  top: calc(env(safe-area-inset-top, 0px) + clamp(0.5rem, 1.5vw, 1.25rem));
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: var(--content-max);
+  padding-inline: var(--page-pad);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Ensures it stays on top */
+  /* The shell spans the full width; only the buttons should intercept
+     clicks so the band next to them stays transparent to the page. */
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   Footer shell (the fixed wrapper lives in footer.css)
+   ========================================================================== */
+
+.footer {
+  width: 100%;
+}
+
+/* ==========================================================================
+   Motion preferences
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ==========================================================================
+   Page transitions (browser View Transitions API)
+   --------------------------------------------------------------------------
+   The outgoing page slides out one side while the incoming page slides in from
+   the other, simultaneously. Direction comes from data-nav on <html>, which
+   navbar/page.tsx sets synchronously before navigating.
+
+   Browsers without View Transitions support just navigate instantly — the
+   bridging package feature-detects and no-ops, so this degrades cleanly.
+   ========================================================================== */
+
+/* The fixed navbar/footer must each get their OWN transition name. Anything
+   left unnamed is flattened into the single `root` snapshot, which would make
+   them slide along with the page instead of staying put. Names must be unique
+   or the browser skips the whole transition. */
+.navbar {
+  view-transition-name: site-nav;
+}
+
+.footer-wrapper {
+  view-transition-name: site-footer;
+}
+
+@keyframes vt-slide-out-left  { to   { transform: translateX(-100%); } }
+@keyframes vt-slide-in-right  { from { transform: translateX(100%);  } }
+@keyframes vt-slide-out-right { to   { transform: translateX(100%);  } }
+@keyframes vt-slide-in-left   { from { transform: translateX(-100%); } }
+
+/* 260ms with a snappy curve suits the arcade/pixel feel. */
+::view-transition-old(root) {
+  animation: 260ms cubic-bezier(0.4, 0, 0.2, 1) both vt-slide-out-left;
+}
+
+::view-transition-new(root) {
+  animation: 260ms cubic-bezier(0.4, 0, 0.2, 1) both vt-slide-in-right;
+}
+
+/* Default behaviour cross-fades the two snapshots, which looks muddy for a
+   push-style slide. These make both panes fully opaque so one visibly shoves
+   the other off-screen. */
+::view-transition-image-pair(root) {
+  isolation: auto;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  mix-blend-mode: normal;
+}
+
+/* Reverse the slide when navigating leftwards through the nav. */
+:root[data-nav="back"]::view-transition-old(root) {
+  animation-name: vt-slide-out-right;
+}
+
+:root[data-nav="back"]::view-transition-new(root) {
+  animation-name: vt-slide-in-left;
+}
+
+/* REQUIRED, not redundant: the killswitch above uses `*`, which is a type
+   selector and never matches ::view-transition-* pseudo-elements. Without this
+   block, reduced-motion users would still get the full slide. */
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}
+
+/*!**********************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[10].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[10].use[3]!./src/app/components/footer/footer.css ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************/
+/* Fonts (Pixelboy / minecraft / minecraftbold) are declared once in
+   src/app/globals.css — do not re-declare them here. */
+
+.footer-wrapper {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    max-width: 100%;
+    z-index: 900; /* above page content, below the navbar (1000) */
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: clamp(0.25rem, 1.5vw, 1rem);
+
+    /* Honour the iOS home-indicator inset on top of the normal padding. */
+    padding: clamp(0.5rem, 1.5vw, 1rem) var(--page-pad);
+    padding-bottom: calc(clamp(0.5rem, 1.5vw, 1rem) + env(safe-area-inset-bottom, 0px));
+
+    color: white;
+    font-size: clamp(0.625rem, 2vw, 0.875rem);
+    line-height: 1.3;
+    text-align: center;
+
+    /* The bar spans the full width and page content scrolls behind it, so it
+       must not swallow clicks; the text itself stays selectable. */
+    pointer-events: none;
+}
+
+.footer-wrapper > * {
+    pointer-events: auto;
+    min-width: 0;
+}
+
+/* Narrow screens: stack the two items instead of letting them collide. */
+@media (max-width: 560px) {
+    .footer-wrapper {
+        flex-direction: column;
+        justify-content: center;
+        gap: 0.125rem;
+    }
+}
+

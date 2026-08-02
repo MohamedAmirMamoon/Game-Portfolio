@@ -1,13 +1,25 @@
+/* Fonts (Pixelboy / minecraft / minecraftbold) are declared once in
+   src/app/globals.css — do not re-declare them here. */
+
 .navbar-wrapper {
     display: flex;
     flex-direction: row;
-    top: 10%;
-    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: clamp(0.375rem, 1.5vw, 1.25rem);
+    width: 100%;
 }
 
 .navbar-wrapper button {
-    width: 100px;
-    height: 30px;
+    /* Fluid instead of fixed 100px x 30px. Height comes from padding +
+       min-height so the label can never be clipped, and the tap target stays
+       at least ~44px tall on touch-sized screens. */
+    flex: 0 1 auto;
+    min-width: clamp(4.25rem, 14vw, 6.5rem);
+    max-width: 100%;
+    min-height: 2.75rem; /* ~44px touch target */
+    padding: clamp(0.375rem, 1.2vw, 0.625rem) clamp(0.5rem, 2vw, 1rem);
     background: linear-gradient(to bottom, #96b6da, #567496); /* Retro Game Boy green */
     border: 4px solid #35475c; /* Darker green border */
     border-radius: 6px; /* Slight curve to mimic old screens */
@@ -17,20 +29,44 @@
     justify-content: center;
     gap: 8px;
     font-family: 'Press Start 2P', sans-serif; /* Pixel font */
-    font-size: 8px;
+    font-size: clamp(0.5rem, 1.6vw, 0.75rem);
+    line-height: 1.2;
     color: #35393e;
     text-transform: uppercase;
+    text-align: center;
     text-shadow: 1px 1px 0 #2c3820;
     position: relative;
     box-shadow: inset -3px -3px #566d87, inset 3px 3px #84a4c8; /* Pixel shadow */
     image-rendering: pixelated;
     cursor: pointer;
+    /* .navbar (globals.css) sets pointer-events: none on the full-width fixed
+       band so it doesn't swallow clicks meant for the page; re-enable them on
+       the actual controls. */
+    pointer-events: auto;
+    /* Long labels shrink rather than overflow the fixed band. */
+    overflow-wrap: break-word;
+    -webkit-tap-highlight-color: transparent;
 }
 
+/* Keyboard focus must be visible over the pixel gradient. */
+.navbar-wrapper button:focus-visible {
+    outline: 3px solid #fff8b0;
+    outline-offset: 2px;
+}
 
-@media (max-width: 768px) { /* Adjust for smaller screens */
-    .navbar-wrapper {
-        gap: 5px;
+/* From ~700px up the row fits comfortably on one line (matches the --nav-h
+   tier in globals.css), so drop the enforced touch-target height back toward
+   the original compact look. */
+@media (min-width: 700px) {
+    .navbar-wrapper button {
+        min-height: 2.25rem;
     }
-        
-  }
+}
+
+/* Very narrow phones: keep 5 buttons reachable across two wrapped rows. */
+@media (max-width: 380px) {
+    .navbar-wrapper button {
+        min-width: 3.75rem;
+        padding-inline: 0.375rem;
+    }
+}

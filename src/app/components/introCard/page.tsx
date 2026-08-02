@@ -1,5 +1,4 @@
 'use client';
-import {useRouter} from 'next/navigation'
 import Image from 'next/image';
 import './intro.css'
 import CardNav from './cardNav/CardNav';
@@ -8,104 +7,93 @@ import RouteContent from './routeContent/RouteContent';
 import { useState } from 'react';
 
 
-
-
 export default function IntroCard() {
 
-    const router = useRouter();
-
     const [activeSection, setActiveSection] = useState("bio");
-  
 
     return (
-      
-    <>
-        <div className="viewport-container">
-   
-    
+
+    <div className="intro-page">
+
+        <div className="home-title">
+            <p>Dev Portfolio</p>
         </div>
-        <div className="page-content">
-            <div className="cardplusnav">
-                <div className='intro-wrapper'>
-                    <div className="myimg">
-                        <Image
-                            src="/juniorportrait.jpeg"
-                            alt="Picture of the author"
-                            width={200}
-                            height={200}
-                            style={{
-                                borderRadius: "50%", // Ensures it's round
-                                objectFit: "cover",  // Makes sure image fills the circle
-                            }}
-                        />
-                        
-                    </div>
-                    
-                    <div className="name">
-                        <h1>Mohamed Amir Mamoon</h1>   
-                    </div>
 
-                    <div className="info" >
-                        <p>Student at USC</p>
-                        <p> - </p>
-                        <p>Prev SWE Intern @ Ticketmaster</p>
-                    </div>
+        {/* Desktop: nav column | card | content panel.
+            Narrow: card, then nav row, then content panel (DOM order). */}
+        <div className="intro-layout">
+
+            <div className="intro-wrapper">
+                <div className="myimg">
+                    <Image
+                        src="/juniorportrait.jpeg"
+                        alt="Picture of the author"
+                        width={200}
+                        height={200}
+                        priority
+                    />
                 </div>
 
-                <div className='cardnavigation'>
-                    <div onClick={() => setActiveSection("bio")} >
-                        <CardNav img="/profileicon.png" title="Bio" w={50} h={50} />
-                    </div>
-                    <div onClick={() => setActiveSection("skills")} >
-                        <CardNav img="/star.png" title="Skills" w={50} h={50} />
-                    </div>
-                    <div onClick={() => setActiveSection("projects")} >
-                        <CardNav img="/projects.png" title="Projects" w={60} h={50} />
-                    </div>
-                    <div onClick={() => setActiveSection("resume")} >
-                        <CardNav img="/notes.png" title="Experience" w={50} h={50} />
-                    </div>
+                <div className="name">
+                    <h1>Mohamed Amir Mamoon</h1>
                 </div>
 
+                <div className="info">
+                    <p>USC &apos;26</p>
+                    <p> - </p>
+                    <p>SDE Intern @ Amazon</p>
+                </div>
+            </div>
+
+            <div className="cardnavigation">
+                <CardNav
+                    img="/profileicon.png"
+                    title="Bio"
+                    w={50}
+                    h={50}
+                    active={activeSection === "bio"}
+                    onSelect={() => setActiveSection("bio")}
+                />
+                <CardNav
+                    img="/star.png"
+                    title="Skills"
+                    w={50}
+                    h={50}
+                    active={activeSection === "skills"}
+                    onSelect={() => setActiveSection("skills")}
+                />
+                <CardNav
+                    img="/projects.png"
+                    title="Projects"
+                    w={60}
+                    h={50}
+                    active={activeSection === "projects"}
+                    onSelect={() => setActiveSection("projects")}
+                />
+                <CardNav
+                    img="/notes.png"
+                    title="Experience"
+                    w={50}
+                    h={50}
+                    active={activeSection === "resume"}
+                    onSelect={() => setActiveSection("resume")}
+                />
             </div>
 
             <div className="content">
                 <RouteContent activeSection={activeSection}/>
             </div>
 
-
-        
-
-           
-
         </div>
 
         <div className="socials">
-            <Contact img="/mail2.png" title="Contact" w={50} h={50} link="mailto:mohamedamamoon0@gmail.com"/>
-            <Contact img="/insta2.png" title="Insta" w={50} h={50} link="https://www.instagram.com/amir.mamoonn/"/>
-            <Contact img="/linkedin2.png" title="LinkedIn" w={50} h={50} link="https://www.linkedin.com/in/mohamed-mamoon/"/>
-            <Contact img="/github2.png" title="Github" w={50} h={50} link="https://github.com/MohamedAmirMamoon"/>
+            <Contact img="/mail2.png" title="Contact" link="mailto:mohamedamamoon0@gmail.com"/>
+            <Contact img="/insta2.png" title="Insta" link="https://www.instagram.com/amir.mamoonn/"/>
+            <Contact img="/linkedin2.png" title="LinkedIn" link="https://www.linkedin.com/in/mohamed-mamoon/"/>
+            <Contact img="/github2.png" title="Github" link="https://github.com/MohamedAmirMamoon"/>
         </div>
 
+    </div>
 
-
-        <div className="home-title">
-            <p>Dev Portfolio</p>
-        </div>
-
-        <div className="homebottom-title">
-            <p>LavaLab - I had to get in the Lab 😭 🔥 🔥 🔥</p>
-        </div>
-
-        
-        
-
-
-        
-
-
-           
-    </>
-      
     );
 }

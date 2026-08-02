@@ -1,30 +1,29 @@
 'use client';
-import {useRouter} from 'next/navigation'
-import Image from 'next/image';
 import './cardnav.css'
 
 
 interface CardNavProps {
     img: string;
     title: string;
+    /** Intrinsic pixel size of the icon — used as the aspect-ratio hint only.
+     *  The rendered size is driven by CSS (`.pixel-button img`) so it can be fluid. */
     w: number;
     h: number;
+    active?: boolean;
+    onSelect?: () => void;
 }
 
-export default function CardNav({ img , title, w, h }: CardNavProps) {
-    
+export default function CardNav({ img, title, w, h, active = false, onSelect }: CardNavProps) {
 
     return (
-      
-        <>
-            <div className='pixel-button' >
-                <img src={img} alt="Picture of the author" width={w} height={h} />
-                <p>{title}</p>
-                
-            </div>
-
-            
-        </>
-      
+        <button
+            type="button"
+            className={`pixel-button${active ? ' is-active' : ''}`}
+            onClick={onSelect}
+            aria-pressed={active}
+        >
+            <img src={img} alt="" width={w} height={h} aria-hidden="true" />
+            <p>{title}</p>
+        </button>
     );
 }

@@ -1,32 +1,23 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
 import './barber.css';
 
-
 export default function Barber() {
-    const router = useRouter();
     return (
-        <div>
+        <div className="barber-page">
             <div className="barber-title">
                 <p>💈 Set Up a Haircut Appointment 💈</p>
             </div>
-            <div className="calendly">
 
+            <div className="calendly">
                 <div className="book">
-                    <iframe 
+                    <iframe
                         className="calendly-inline-widget"
-                        src="https://calendly.com/mamoonmohamad0/30min" 
-                        width="700" 
-                        height="560" 
-                        title="Example Website"
+                        src="https://calendly.com/mamoonmohamad0/30min"
+                        title="Book a haircut appointment with Mo on Calendly"
                     />
                 </div>
             </div>
-
-
-            
         </div>
     );
 }
-

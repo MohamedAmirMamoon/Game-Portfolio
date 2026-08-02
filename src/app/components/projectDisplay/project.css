@@ -1,63 +1,81 @@
-@font-face {
-    font-family: "Pixelboy";
-    src: url("/fonts/Pixeboy.ttf") format("truetype"); /* Ensure the path is correct */
-    font-weight: normal;
-    font-style: normal;
-}
+/* Fonts (Pixelboy / minecraft / minecraftbold) are declared globally in globals.css. */
 
-@font-face {
-    font-family: 'minecraft';
-    src: url('/fonts/minecraft.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'minecraftbold';
-    src: url('/fonts/minecraftbold.otf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
+/*
+ * Timeline breakpoint: 1000px.
+ * Above it  -> alternating two-column timeline (line down the middle).
+ * At/below  -> single column (line + dots pinned to the left rail).
+ * projectCard/projcard.css uses the SAME 1000px breakpoint - keep them in sync.
+ */
 
 .project-wrapper {
-    padding: 40px;
-    max-width: 1200px;
-    margin: 0 auto;
-    margin-top: 100px;
+    width: 100%;
+    max-width: var(--content-max, 1200px);
+    margin-inline: auto;
+    /* The layout wrapper already reserves space for the fixed navbar/footer via
+       --nav-h / --footer-h, so this only needs normal internal spacing. */
+    padding-block: clamp(16px, 4vw, 40px);
+    padding-inline: var(--page-pad, clamp(16px, 4vw, 40px));
 }
 
 .project-title {
     font-family: 'minecraftbold';
-    font-size: 2.5rem;
+    /* Fluid instead of a hard 2.5rem -> 1.5rem jump. */
+    font-size: clamp(1.5rem, 1rem + 3.2vw, 2.5rem);
+    line-height: 1.15;
     text-align: center;
-    margin-bottom: 60px;
+    /* Legible over the dark background image at every size. */
+    color: #ffffff;
+    text-shadow:
+        0 2px 0 rgba(0, 0, 0, 0.9),
+        0 0 12px rgba(0, 0, 0, 0.75);
+    margin-bottom: clamp(24px, 5vw, 60px);
+    overflow-wrap: break-word;
 }
 
+/* -------------------------------------------------------------------------
+   Timeline geometry - every offset below is derived from these four values,
+   so the line always runs exactly through the dot centers.
+   --------------------------------------------------------------------- */
 .timeline {
+    --tl-line-w: 6px;
+    /* box-sizing: border-box is global, so this is the dot's OUTER size
+       (purple fill + white ring included). */
+    --tl-dot-size: 20px;
+    /* Breathing room between the line and the card edge. */
+    --tl-gap: clamp(16px, 3vw, 40px);
+    /* Single-column mode: distance from the timeline's left edge to the
+       CENTER of the vertical line. Must be >= half a dot so nothing clips. */
+    --tl-rail: calc(var(--tl-dot-size) / 2 + 4px);
+
     position: relative;
+    width: 100%;
     max-width: 1000px;
-    margin: 0 auto;
+    margin-inline: auto;
 }
 
+/* The vertical line. Always centered on its own anchor point via
+   translateX(-50%), in both layout modes. */
 .timeline::after {
     content: '';
     position: absolute;
-    width: 6px;
-    background-color: #000000;
     top: 0;
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    border-radius: 3px;
+    width: var(--tl-line-w);
+    background-color: #000000;
+    border-radius: calc(var(--tl-line-w) / 2);
 }
 
 .timeline-item {
+    position: relative;
     display: flex;
     justify-content: flex-end;
-    padding: 10px 40px;
-    position: relative;
     width: 50%;
-    margin: 40px 0;
+    padding: 10px var(--tl-gap);
+    margin-block: clamp(20px, 4vw, 40px);
+    /* Never let a flex child force the item wider than its 50% track. */
+    min-width: 0;
 }
 
 .timeline-item:nth-child(odd) {
@@ -69,12 +87,36 @@
     flex-direction: row-reverse;
 }
 
+/* Dots: pinned to the item edge that touches the center line, offset by
+   exactly half a dot so the dot center sits on the line center. */
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: auto;
+    right: calc(var(--tl-dot-size) / -2);
+    width: var(--tl-dot-size);
+    height: var(--tl-dot-size);
+    background: #61285f;
+    border: 4px solid white;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.timeline-item:nth-child(even)::before {
+    left: calc(var(--tl-dot-size) / -2);
+    right: auto;
+}
+
+/* Fluid card - no fixed 400px, so it can never overflow its 50% parent. */
 .timeline-content {
+    width: 100%;
+    max-width: 440px;
+    min-width: 0;
     background: white;
     border-radius: 12px;
-    padding: 20px;
+    padding: clamp(12px, 2vw, 20px);
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    width: 400px;
     transition: transform 0.3s ease;
 }
 
@@ -85,84 +127,41 @@
 .timeline-date {
     font-family: 'minecraft';
     color: #3b82f6;
-    font-size: 0.9rem;
+    font-size: clamp(0.75rem, 0.65rem + 0.5vw, 0.9rem);
     margin-bottom: 10px;
 }
 
-.timeline-image {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-}
-
-.timeline-image:hover {
-    transform: scale(1.05);
-}
-
-.timeline-title {
-    font-family: 'minecraftbold';
-    font-size: 1.2rem;
-    margin: 15px 0;
-}
-
-/* Dots on timeline */
-.timeline-item::before {
-    content: '';
-    width: 20px;
-    height: 20px;
-    background: #61285f;
-    border: 4px solid white;
-    border-radius: 50%;
-    position: absolute;
-    top: 20px;
-    left: calc(100% - 12px);
-    z-index: 1;
-}
-
-.timeline-item:nth-child(even)::before {
-    left: -12px;
-}
-
+/* ---------------------------- Single column ---------------------------- */
 @media (max-width: 1000px) {
-
-    .project-wrapper {
-        
-        margin-top: 100px;
-    }
-
-    .project-title {
-        font-family: 'minecraftbold';
-        font-size: 1.5rem;
-        color: white;
-    }
-
     .timeline::after {
-        left: 31px;
+        left: var(--tl-rail);
     }
 
-    .timeline-item {
-        width: 100%;
-        padding-left: 70px;
-        padding-right: 25px;
-    }
-
+    .timeline-item,
     .timeline-item:nth-child(even) {
         left: 0;
+        width: 100%;
         flex-direction: row;
+        /* rail center + half a dot + gap = the card never touches the dot. */
+        padding-left: calc(var(--tl-rail) + var(--tl-dot-size) / 2 + var(--tl-gap));
+        padding-right: 0;
+    }
+
+    .timeline-item::before,
+    .timeline-item:nth-child(even)::before {
+        left: calc(var(--tl-rail) - var(--tl-dot-size) / 2);
+        right: auto;
     }
 
     .timeline-content {
-        width: 100%;
+        max-width: none;
     }
+}
 
-    .timeline-item::before {
-        left: 21px;
-    }
-
-    .timeline-item:nth-child(even)::before {
-        left: 21px;
+@media (prefers-reduced-motion: reduce) {
+    .timeline-content,
+    .timeline-content:hover {
+        transition: none;
+        transform: none;
     }
 }

@@ -1,6 +1,7 @@
 {
-  "/components/barber/page": "app/components/barber/page.js",
   "/components/introCard/page": "app/components/introCard/page.js",
-  "/components/me/page": "app/components/me/page.js",
-  "/components/projectDisplay/page": "app/components/projectDisplay/page.js"
+  "/components/projectDisplay/page": "app/components/projectDisplay/page.js",
+  "/components/barber/page": "app/components/barber/page.js",
+  "/components/resume/page": "app/components/resume/page.js",
+  "/components/me/page": "app/components/me/page.js"
 }

@@ -1,81 +1,53 @@
-"use client";
-
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import IntroCard from './components/introCard/page';
-import Contact from './components/introCard/contact/Contact';
+import type { Metadata, Viewport } from "next";
+import { ViewTransitions } from 'next-view-transitions';
 import Footer from './components/footer/page';
 import Navbar from './components/navbar/page';
-import { AnimatePresence, motion } from "framer-motion";
-import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
 
+export const metadata: Metadata = {
+  title: "Mo's Portfolio",
+  icons: {
+    icon: "/favicon.ico",
+  },
+};
 
-
+// viewport-fit=cover is required by the env(safe-area-inset-*) rules in
+// globals.css. User zoom is intentionally left enabled (no maximumScale /
+// userScalable) for accessibility.
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+};
 
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const pathname = usePathname();
-  const [displayChildren, setDisplayChildren] = useState(children);
-
-  useEffect(() => {
-    setDisplayChildren(children);
-  }, [children]);
-
   return (
-    <html lang="en">
-      <head>
-        <title>Mo's Portfolio</title>
-        <link rel="icon" href="/favicon.ico" type="image/png" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-      </head>
-      <body
-        
-        style={{
-          minHeight: "100vh", // Change from 750px to full viewport height
-          margin: 0,
-          overflowY: "auto", 
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "flex-start", // Change from "center" to "flex-start"
-          alignItems: "center",
-          backgroundImage: "url('/adventuretime.png')",
-          backgroundRepeat: "no-repeat",
-          backgroundPosition: "center center",
-          backgroundAttachment: "fixed", // Keep this - crucial for the effect you want
-          backgroundSize: "cover", // Keep this - ensures image always covers viewport
-        }}
-      >
-        <nav className="navbar">
-          <Navbar/>
+    /* ViewTransitions bridges the browser View Transitions API to App Router
+       navigation: it holds the transition open until the new route has actually
+       mounted, which a bare document.startViewTransition() around router.push()
+       cannot do. Slide keyframes live in globals.css. */
+    <ViewTransitions>
+      <html lang="en">
+        <body>
+          <nav className="navbar">
+            <Navbar/>
+          </nav>
 
-        </nav>
-        
-        
-        
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={pathname} // ✅ Triggers animation when route changes
-            initial={{ x: "100%", opacity: 0 }} // Start off-screen (right)
-            animate={{ x: 0, opacity: 1 }} // Slide in to position
-            exit={{ x: "-100%", opacity: 0 }} // Slide out to the left
-            transition={{ duration: 0.5, ease: "easeInOut" }}
-            style={{ width: "100%", height: "100%", position: "absolute" }}
-          >
-            {displayChildren}
-          </motion.div>
-        </AnimatePresence>
+          {/* .page-shell reserves the fixed navbar / footer bands — see globals.css */}
+          <div className="page-shell">
+            {children}
+          </div>
 
-        <div className="footer">
-          <Footer/>
-        </div>
+          <div className="footer">
+            <Footer/>
+          </div>
 
-      </body>
-    </html>
+        </body>
+      </html>
+    </ViewTransitions>
   );
-
 }

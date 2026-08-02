@@ -3,19 +3,29 @@
 import React from 'react';
 import './contact.css';
 
-const Contact = ({ img, title, w, h, link }: { img: string; title: string; w: number; h: number; link: string }) => {
+interface ContactProps {
+    img: string;
+    title: string;
+    link: string;
+    /** @deprecated Sizing lives in contact.css now so it can be fluid. Accepted
+     *  (and ignored) so older call sites still type-check. */
+    w?: number;
+    h?: number;
+}
+
+const Contact = ({ img, title, link }: ContactProps) => {
+    const isExternal = /^https?:/i.test(link);
+
     return (
-        <img 
-            src={img} 
-            alt={title}
-            className="contact-image"
-            style={{ 
-                width: `${w}px`, 
-                height: `${h}px` 
-            }}
-            onClick={() => window.open(link, "_blank")}
+        <a
+            className="contact-link"
+            href={link}
             title={title}
-        />
+            aria-label={title}
+            {...(isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+        >
+            <img src={img} alt="" className="contact-image" aria-hidden="true" />
+        </a>
     );
 };
 

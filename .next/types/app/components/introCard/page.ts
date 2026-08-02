@@ -1,4 +1,4 @@
-// File: /Users/momamoon/Desktop/projects/Game-Portfolio/src/app/components/introCard/page.tsx
+// File: /Users/mamamoon/Documents/personal/game/Game-Portfolio/src/app/components/introCard/page.tsx
 import * as entry from '../../../../../src/app/components/introCard/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
