@@ -4,7 +4,7 @@ import './resume.css';
 
 /* Google Drive file ID, shared once so the embed and the outbound links can
    never drift apart. */
-const RESUME_FILE_ID = '15z6wl-5atpmdB1YhwC_Irp-tUyUbLT1o';
+const RESUME_FILE_ID = '1seLJOPMD1Rd0ur1Ay8KWMOefWktKPz1s';
 
 /* /preview is the ONLY Drive URL that can be framed. The /view URL sends
    `X-Frame-Options: SAMEORIGIN`, so embedding it renders a blank box. */
