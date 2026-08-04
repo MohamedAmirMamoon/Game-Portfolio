@@ -1,0 +1,317 @@
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[10].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[10].use[3]!./src/app/components/projectDisplay/project.css ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************/
+/* Fonts (Pixelboy / minecraft / minecraftbold) are declared globally in globals.css. */
+
+/*
+ * Timeline breakpoint: 1000px.
+ * Above it  -> alternating two-column timeline (line down the middle).
+ * At/below  -> single column (line + dots pinned to the left rail).
+ * projectCard/projcard.css uses the SAME 1000px breakpoint - keep them in sync.
+ */
+
+.project-wrapper {
+    width: 100%;
+    max-width: var(--content-max, 1200px);
+    margin-inline: auto;
+    /* The layout wrapper already reserves space for the fixed navbar/footer via
+       --nav-h / --footer-h, so this only needs normal internal spacing. */
+    padding-block: clamp(16px, 4vw, 40px);
+    padding-inline: var(--page-pad, clamp(16px, 4vw, 40px));
+}
+
+.project-title {
+    font-family: 'minecraftbold';
+    /* Fluid instead of a hard 2.5rem -> 1.5rem jump. */
+    font-size: clamp(1.5rem, 1rem + 3.2vw, 2.5rem);
+    line-height: 1.15;
+    text-align: center;
+    /* Legible over the dark background image at every size. */
+    color: #ffffff;
+    text-shadow:
+        0 2px 0 rgba(0, 0, 0, 0.9),
+        0 0 12px rgba(0, 0, 0, 0.75);
+    margin-bottom: clamp(24px, 5vw, 60px);
+    overflow-wrap: break-word;
+}
+
+/* -------------------------------------------------------------------------
+   Timeline geometry - every offset below is derived from these four values,
+   so the line always runs exactly through the dot centers.
+   --------------------------------------------------------------------- */
+.timeline {
+    --tl-line-w: 6px;
+    /* box-sizing: border-box is global, so this is the dot's OUTER size
+       (purple fill + white ring included). */
+    --tl-dot-size: 20px;
+    /* Breathing room between the line and the card edge. */
+    --tl-gap: clamp(16px, 3vw, 40px);
+    /* Single-column mode: distance from the timeline's left edge to the
+       CENTER of the vertical line. Must be >= half a dot so nothing clips. */
+    --tl-rail: calc(var(--tl-dot-size) / 2 + 4px);
+
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    margin-inline: auto;
+}
+
+/* The vertical line. Always centered on its own anchor point via
+   translateX(-50%), in both layout modes. */
+.timeline::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: var(--tl-line-w);
+    background-color: #000000;
+    border-radius: calc(var(--tl-line-w) / 2);
+}
+
+.timeline-item {
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    width: 50%;
+    padding: 10px var(--tl-gap);
+    margin-block: clamp(20px, 4vw, 40px);
+    /* Never let a flex child force the item wider than its 50% track. */
+    min-width: 0;
+}
+
+.timeline-item:nth-child(odd) {
+    left: 0;
+}
+
+.timeline-item:nth-child(even) {
+    left: 50%;
+    flex-direction: row-reverse;
+}
+
+/* Dots: pinned to the item edge that touches the center line, offset by
+   exactly half a dot so the dot center sits on the line center. */
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: auto;
+    right: calc(var(--tl-dot-size) / -2);
+    width: var(--tl-dot-size);
+    height: var(--tl-dot-size);
+    background: #61285f;
+    border: 4px solid white;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.timeline-item:nth-child(even)::before {
+    left: calc(var(--tl-dot-size) / -2);
+    right: auto;
+}
+
+/* Fluid card - no fixed 400px, so it can never overflow its 50% parent. */
+.timeline-content {
+    width: 100%;
+    max-width: 440px;
+    min-width: 0;
+    background: white;
+    border-radius: 12px;
+    padding: clamp(12px, 2vw, 20px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.timeline-content:hover {
+    transform: translateY(-5px);
+}
+
+.timeline-date {
+    font-family: 'minecraft';
+    color: #3b82f6;
+    font-size: clamp(0.75rem, 0.65rem + 0.5vw, 0.9rem);
+    margin-bottom: 10px;
+}
+
+/* ---------------------------- Single column ---------------------------- */
+@media (max-width: 1000px) {
+    .timeline::after {
+        left: var(--tl-rail);
+    }
+
+    .timeline-item,
+    .timeline-item:nth-child(even) {
+        left: 0;
+        width: 100%;
+        flex-direction: row;
+        /* rail center + half a dot + gap = the card never touches the dot. */
+        padding-left: calc(var(--tl-rail) + var(--tl-dot-size) / 2 + var(--tl-gap));
+        padding-right: 0;
+    }
+
+    .timeline-item::before,
+    .timeline-item:nth-child(even)::before {
+        left: calc(var(--tl-rail) - var(--tl-dot-size) / 2);
+        right: auto;
+    }
+
+    .timeline-content {
+        max-width: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .timeline-content,
+    .timeline-content:hover {
+        transition: none;
+        transform: none;
+    }
+}
+
+/*!********************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[10].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[10].use[3]!./src/app/components/projectDisplay/projectCard/projcard.css ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************************************/
+/*
+ * Inner project card. Lives inside .timeline-content, so it must never
+ * declare a fixed pixel width.
+ * Breakpoint is 1000px to match projectDisplay/project.css.
+ */
+
+.project-item {
+    width: 100%;
+    max-width: 400px;
+    min-width: 0;
+    background-color: black;
+    color: white;
+    padding: clamp(12px, 2vw, 20px);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    margin: clamp(12px, 2vw, 20px) auto;
+}
+
+.project-title-text {
+    margin-bottom: 10px;
+    font-family: 'minecraftbold';
+    font-size: clamp(0.95rem, 0.85rem + 0.6vw, 1.2rem);
+    line-height: 1.2;
+    overflow-wrap: break-word;
+}
+
+/* The clickable image. <a> so it is keyboard focusable and announced as a link. */
+.image-container {
+    position: relative;
+    display: block;
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.image-container:focus-visible {
+    outline: 3px solid #61285f;
+    outline-offset: 3px;
+    box-shadow: 0 0 0 6px rgba(97, 40, 95, 0.35);
+}
+
+.image-container img {
+    display: block;
+    /* Fluid: no reliance on the width/height attributes for layout.
+       aspect-ratio keeps the box reserved so there is no layout shift. */
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.image-container:hover img,
+.image-container:focus-visible img {
+    transform: scale(1.05);
+}
+
+/* Subtle glow overlay on hover/focus */
+.image-container::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0);
+    transition: background 0.3s ease;
+    border-radius: 8px;
+    pointer-events: none;
+}
+
+.image-container:hover::after,
+.image-container:focus-visible::after {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* -------------------------------------------------------------------------
+   Placeholder tile for projects that have no screenshot / link yet.
+   Deliberately NOT interactive: no cursor: pointer, no hover scale, no focus
+   ring - there is nowhere to go. Matches the real image box exactly
+   (same aspect-ratio, same radius) so the card never changes size once a
+   screenshot is dropped in.
+   --------------------------------------------------------------------- */
+.image-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(4px, 1vw, 10px);
+
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    border-radius: 8px;
+    overflow: hidden;
+
+    /* Site retro pixel palette (same blues as the intro card). */
+    background: linear-gradient(135deg,
+        rgb(215, 230, 255),
+        rgb(97, 155, 255),
+        rgb(30, 59, 139)
+    );
+    border: 4px solid rgb(0, 0, 0);
+    box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.35);
+    color: #ffffff;
+    text-align: center;
+    padding: clamp(8px, 2vw, 16px);
+}
+
+.image-placeholder-badge {
+    font-family: 'minecraftbold';
+    font-size: clamp(0.7rem, 0.6rem + 0.5vw, 0.9rem);
+    line-height: 1;
+    letter-spacing: 0.08em;
+    padding: clamp(3px, 0.8vw, 6px) clamp(6px, 1.6vw, 12px);
+    background: #000000;
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    border-radius: 0; /* pixel aesthetic - hard corners */
+}
+
+.image-placeholder-text {
+    font-family: 'minecraft';
+    font-size: clamp(0.8rem, 0.7rem + 0.7vw, 1.05rem);
+    line-height: 1.2;
+    overflow-wrap: break-word;
+    text-shadow: 0 2px 0 rgba(0, 0, 0, 0.85);
+}
+
+@media (max-width: 1000px) {
+    .project-item {
+        max-width: none;
+        height: auto;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .image-container img,
+    .image-container:hover img,
+    .image-container:focus-visible img {
+        transition: none;
+        transform: none;
+    }
+}
+

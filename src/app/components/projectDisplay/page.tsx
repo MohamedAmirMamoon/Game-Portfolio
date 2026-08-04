@@ -23,9 +23,11 @@ export default function ProjectDisplay() {
                         {/* PLACEHOLDER date */}
                         <div className="timeline-date">June 2026</div>
                         <ProjectCard
-                            title="Poke-Claude"
+                            img="/poketoken.svg"
+                            title="Poke-Token"
                             w={300}
                             h={200}
+                            link="https://github.com/MohamedAmirMamoon/poketoken"
                         />
                     </div>
                 </div>
