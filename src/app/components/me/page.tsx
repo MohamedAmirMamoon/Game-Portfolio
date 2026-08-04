@@ -23,6 +23,7 @@ const PHOTOS = [
     'IMG_6650.JPG',
     'IMG_6678.JPG',
     '61d878ee-4ba1-4a81-8543-3b9ceeca8dde.png',
+    'IMG_0298.jpg'
 ];
 
 const SRCS = PHOTOS.map((name) => encodeURI(`/images/${name}`));
