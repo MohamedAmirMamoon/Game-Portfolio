@@ -5,7 +5,7 @@ import Footer from './components/footer/page';
 import Navbar from './components/navbar/page';
 
 export const metadata: Metadata = {
-  title: "Mo's Portfolio",
+  title: "Amir's Portfolio",
   icons: {
     icon: "/favicon.ico",
   },
