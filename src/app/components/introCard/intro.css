@@ -51,7 +51,7 @@
     font-family: 'minecraftbold';
     font-size: clamp(1.5rem, 1rem + 3.5vw, 3.125rem);
     line-height: 1.1;
-    /* Legible over the dark /adventuretime.png background at every size. */
+    /* Legible over the /goldengate.png background at every size. */
     color: #ffffff;
     text-shadow:
         2px 2px 0 rgb(0 0 0 / 0.9),
@@ -95,23 +95,37 @@
     font-family: 'minecraftbold';
     cursor: pointer;
 
+    /* Golden Gate sunset palette: warm amber -> mauve -> deep indigo, pulled
+       from the background artwork's sky. */
     background: linear-gradient(135deg,
-        rgb(215, 230, 255),  /* Light Blue */
-        rgb(97, 155, 255),   /* Mid Blue */
-        rgb(30, 59, 139)     /* Darker Blue */
+        rgb(245, 205, 150),  /* Warm amber (sunset glow) */
+        rgb(158, 116, 168),  /* Mauve / dusk purple */
+        rgb(46, 38, 71)      /* Deep indigo (night sky) */
     );
 
-    /* Pixelated effect */
-    border: 8px solid rgb(0, 0, 0);
-    box-shadow: 4px 4px 0px rgb(0, 0, 0), 8px 8px 0px rgb(70, 70, 70);
-    border-radius: 0;
+    /* Retro game-panel frame: shares the navbar's pixel-bevel language (inset
+       light top-left / dark bottom-right) but is scaled up and keeps the chunky
+       black outline + hard offset drop shadow so it reads as a UI *panel*, not
+       a nav button. */
+    border: 6px solid #241d3a;
+    border-radius: 6px;
+    box-shadow:
+        inset -4px -4px 0 rgb(46 38 71 / 0.85),     /* dark bevel, bottom-right */
+        inset 4px 4px 0 rgb(245 205 150 / 0.85),    /* light bevel, top-left */
+        6px 6px 0 rgb(0 0 0),                        /* hard pixel drop shadow */
+        10px 10px 0 rgb(60 60 60 / 0.55);
+    image-rendering: pixelated;
 
     transition: transform 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
 .intro-wrapper:hover {
     transform: translateY(-6px);
-    box-shadow: 8px 8px 0px rgb(0, 0, 0), 12px 12px 0px rgb(40, 40, 40);
+    box-shadow:
+        inset -4px -4px 0 rgb(46 38 71 / 0.85),
+        inset 4px 4px 0 rgb(245 205 150 / 0.85),
+        10px 10px 0 rgb(0 0 0),
+        14px 14px 0 rgb(40 40 40 / 0.6);
 }
 
 .intro-wrapper:focus-visible {
